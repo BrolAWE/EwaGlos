@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '%6+ou7-9_r&rt$)kz#=4%=-kxx3d1nw2j5e)#$$t%&_)20$x&z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'https://ewaglos.herokuapp.com/']
 
 
 # Application definition

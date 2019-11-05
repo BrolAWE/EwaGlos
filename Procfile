@@ -1,0 +1,1 @@
+web: gunicorn EwaGlos.wsgi --log-file -

@@ -13,7 +13,7 @@ def word(request, pk, lan):
         word_translation = WordTranslation.objects.get(word=pk, language=lan)
     except Word.DoesNotExist:
         raise Http404
-    return render(request, lan+'.html', context={
+    return render(request, lan.lower()+'.html', context={
         'word': word,
         'subsection': subsection,
         'section': section,

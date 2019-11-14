@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>EwaGlos</title>
+	<link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+	<header>
+		<div class="logo">
+			
+		</div>
+		<div class="section">
+			<ul>
+                {% for section in sections %}
+                    <a href="{% url "section" section.pk %}"><li>{{ section.name }}</li></a>
+                {% endfor %}
+			</ul>
+		</div>
+	</header>
+</body>
+</html>

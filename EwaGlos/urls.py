@@ -21,5 +21,8 @@ from core import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.index, name="index"),
     url(r'^word/(?P<pk>\d+)/(?P<lan>\w+)/$', views.word, name="word"),
+    url(r'^section/(?P<pk>\d+)/$', views.section, name="section"),
+    url(r'^subsection/(?P<pk>\d+)/$', views.subsection, name="subsection"),
 ]

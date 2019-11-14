@@ -14,7 +14,7 @@
 		<div class="section">
 			<ul>
                 {% for section in sections %}
-                    <a href="{% url "section" section.pk %}"><li>{{ section.name }}</li></a>
+                    <a href="{% url "section" section.pk %}" style="background-color: {{ section.colour }}"><li>{{ section.name }}</li></a>
                 {% endfor %}
 			</ul>
 		</div>

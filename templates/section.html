@@ -14,7 +14,7 @@
 		<div class="section">
 			<ul>
                 {% for subsection in subsections %}
-                    <a href="{% url "subsection" subsection.pk %}"><li>{{ subsection.name }}</li></a>
+                    <a href="{% url "subsection" subsection.pk %}" style="background-color: {{ subsection.colour }}"><li>{{ subsection.name }}</li></a>
                 {% endfor %}
 			</ul>
 		</div>

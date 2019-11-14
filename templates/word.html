@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>EwaGlos</title>
+	<link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+	<div class="container">
+		<header>
+			<div class="header-top">
+				<h1>{{ section.name }}</h1>
+			</div>
+			<div class="header-bottom">
+				<h1>{{ subsection.name }}</h1>
+			</div>
+		</header>
+		<main>
+			<div class="words">
+				<div class="ru-word">
+					<div class="header-name">
+						<div class="name">
+							<h3>{{ word.name }}</h3>
+						</div>
+						<div class="name-language">
+							<h3>EN</h3>
+						</div>
+					</div>
+					<div class="definition">
+						<span>Definition:</span> {{ word.definition }}
+					</div>
+					<div class="comment">
+						<span>Comment:</span> {{ word.comment }}
+					</div>
+				</div>
+				<div class="ne-ru-word">
+					<div class="header-name">
+						<div class="name">
+							<h3>{{ word_translation.name }}</h3>
+						</div>
+						<div class="name-language">
+							<h3>{{ word_translation.language }}</h3>
+						</div>
+					</div>
+					<div class="definition">
+						<span>
+                            {% if word_translation.language == "EN" %}
+                                Definition:
+                            {% elif word_translation.language == "RU" %}
+                                Определение:
+                            {% elif word_translation.language == "FR" %}
+                                Définition:
+                            {% elif word_translation.language == "DE" %}
+                                Definition:
+                            {% elif word_translation.language == "HR" %}
+                                Definicija:
+                            {% elif word_translation.language == "HU" %}
+                                Meghatározás:
+                            {% elif word_translation.language == "IT" %}
+                                Definizione:
+                            {% elif word_translation.language == "RO" %}
+                                Definiţie:
+                            {% elif word_translation.language == "TR" %}
+                                Tanım:
+                            {% elif word_translation.language == "BG" %}
+                                Дефиниция:
+                            {% elif word_translation.language == "ES" %}
+                                Definición:
+                            {% elif word_translation.language == "PL" %}
+                                Definicja:
+                            {% endif %}
+                        </span>
+                        {{ word_translation.definition }}
+					</div>
+					<div class="comment">
+						<span>
+                            {% if word_translation.language == "EN" %}
+                                Comment:
+                            {% elif word_translation.language == "RU" %}
+                                Комментарий:
+                            {% elif word_translation.language == "FR" %}
+                                Commentaires:
+                            {% elif word_translation.language == "DE" %}
+                                Kommentar:
+                            {% elif word_translation.language == "HR" %}
+                                Napomena:
+                            {% elif word_translation.language == "HU" %}
+                                Megjegyzés:
+                            {% elif word_translation.language == "IT" %}
+                                Commento:
+                            {% elif word_translation.language == "RO" %}
+                                Adnotare:
+                            {% elif word_translation.language == "TR" %}
+                                Yorum:
+                            {% elif word_translation.language == "BG" %}
+                                Коментар:
+                            {% elif word_translation.language == "ES" %}
+                                Comentario:
+                            {% elif word_translation.language == "PL" %}
+                                Komentarz:
+                            {% endif %}
+                        </span>
+                        {{ word_translation.comment }}
+					</div>
+				</div>
+				<div class="language">
+					<div class="header-name"></div>
+					<div class="list-language">
+						<ul>
+                            {% for wordtranslation in word_translations %}
+                                <li><a href="{% url "word" word.pk wordtranslation.language %}">{{ wordtranslation.language }}</a></li>
+                            {% endfor %}
+						</ul>
+					</div>
+					<div class="list-word-language">
+						<ul>
+                            {% for wordtranslation in word_translations %}
+                                <li>{{ wordtranslation.name }}</li>
+                            {% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+</body>
+</html>

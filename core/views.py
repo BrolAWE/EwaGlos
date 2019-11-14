@@ -11,13 +11,15 @@ def word(request, pk, lan):
         subsection = Subsection.objects.get(pk=word.subsection.pk)
         section = Section.objects.get(pk=subsection.section.pk)
         word_translation = WordTranslation.objects.get(word=pk, language=lan)
+        word_translations = WordTranslation.objects.filter(word=pk).exclude(language=lan).exclude(language="EN")
     except Word.DoesNotExist:
         raise Http404
-    return render(request, lan.lower() + '.html', context={
+    return render(request, 'word.html', context={
         'word': word,
         'subsection': subsection,
         'section': section,
-        'word_translation': word_translation
+        'word_translation': word_translation,
+        'word_translations': word_translations
     })
 
 

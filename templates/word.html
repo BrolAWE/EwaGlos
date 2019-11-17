@@ -14,15 +14,9 @@
 		</div>
         <div class="breadcrumbs">
             <ul>
-            <a href="{% url "index" %}"><li>domik</li></a> > <a href="{% url "section" section.pk %}"><li>{{ section.name }}</li></a> > <a href="{% url "subsection" subsection.pk %}"><li>{{ subsection.name }}</li></a> >
+            <a href="{% url "index" %}"><img src="{% static 'img/house.svg'%}" alt="" height="30" width="30"></a> > <a href="{% url "section" section.pk %}"><li>{{ section.name }}</li></a> > <a href="{% url "subsection" subsection.pk %}"><li>{{ subsection.name }}</li></a> >
             </ul>
         </div>
-			<div class="header-top">
-				<h1>{{ section.name }}</h1>
-			</div>
-			<div class="header-bottom">
-				<h1>{{ subsection.name }}</h1>
-			</div>
 		</header>
 		<main>
 			<div class="words">

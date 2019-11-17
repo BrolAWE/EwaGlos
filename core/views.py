@@ -12,6 +12,10 @@ def word(request, pk, lan):
         section = Section.objects.get(pk=subsection.section.pk)
         word_translation = WordTranslation.objects.get(word=pk, language=lan)
         word_translations = WordTranslation.objects.filter(word=pk).exclude(language=lan).exclude(language="EN")
+        close_senses = CloseSenseWord.objects.filter(word=pk)
+        close_sense_words = Word.objects.filter(pk__in=close_senses.values_list("close_sense"))
+        close_sense_translations = WordTranslation.objects.filter(
+            word__in=close_senses.values_list("close_sense")).filter(language=lan)
     except Word.DoesNotExist:
         raise Http404
     return render(request, 'word.html', context={
@@ -19,7 +23,9 @@ def word(request, pk, lan):
         'subsection': subsection,
         'section': section,
         'word_translation': word_translation,
-        'word_translations': word_translations
+        'word_translations': word_translations,
+        'close_sense_words': close_sense_words,
+        'close_sense_translations': close_sense_translations
     })
 
 
@@ -38,7 +44,9 @@ def section(request, pk):
 
 
 def subsection(request, pk):
+    section = Section.objects.get(pk=pk)
     words = Word.objects.filter(subsection=pk)
     return render(request, 'subsection.html', context={
         'words': words,
+        'section': section,
     })

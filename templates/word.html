@@ -13,7 +13,9 @@
             <a href="{% url "index" %}"><img src="{% static 'img/house.svg'%}" alt="" height="30" width="30"></a>
 		</div>
         <div class="breadcrumbs">
-
+            <ul>
+            <a href="{% url "index" %}"><li>domik</li></a> > <a href="{% url "section" section.pk %}"><li>{{ section.name }}</li></a> > <a href="{% url "subsection" subsection.pk %}"><li>{{ subsection.name }}</li></a> >
+            </ul>
         </div>
 			<div class="header-top">
 				<h1>{{ section.name }}</h1>
@@ -39,6 +41,13 @@
 					<div class="comment">
 						<span>Comment:</span> {{ word.comment }}
 					</div>
+                    <div class="sinonimi">
+                    <ul>
+                        {% for close_sense_word in close_sense_words %}
+                        <a href="{% url "word" close_sense_word.pk "RU" %}"><li>{{ close_sense_word.name }}</li></a>
+                        {% endfor %}
+                    </ul>
+                    </div>
 				</div>
 				<div class="ne-ru-word">
 					<div class="header-name">
@@ -108,7 +117,15 @@
                             {% endif %}
                         </span>
                         {{ word_translation.comment }}
+                    <div class="sinonimi">
+                    <ul>
+                        {% for close_sense_translation in close_sense_translations %}
+                        <a href="{% url "word" close_sense_translation.word.pk "RU" %}"><li>{{ close_sense_translation.name }}</li></a>
+                        {% endfor %}
+                    </ul>
+                    </div>
 					</div>
+
 				</div>
 				<div class="language">
 					<div class="header-name"></div>

@@ -56,6 +56,6 @@ class SubsectionTranslation(models.Model):
 
 
 class CloseSenseWord(models.Model):
-    word = models.ForeignKey(Word, on_delete=models.CASCADE, help_text="Choose from the list the word")
-    close_sense = models.ForeignKey(WordTranslation, on_delete=models.CASCADE,
-                                    help_text="Choose from the list close sense word")
+    word = models.ForeignKey(Word, on_delete=models.CASCADE, help_text="Choose from the list the word", related_name="word")
+    close_sense = models.ForeignKey(Word, on_delete=models.CASCADE,
+                                    help_text="Choose from the list close sense word", related_name="close_sense")

@@ -9,9 +9,12 @@
 <body>
 	<header>
 		<div class="logo">
-			
+            <a href="{% url "index" %}"><img src="{% static 'img/house.svg'%}" alt="" height="30" width="30"></a>
+            <a href="#"><img src="{% static 'img/lupa.svg'%}" alt="" height="30" width="30" class="lupa"></a>
 		</div>
-		<div class="section">
+        <div class="breadcrumbs">
+
+        </div>
 			<ul>
                 {% for word in words %}
                     <a href="{% url "word" word.pk "RU" %}"><li>{{ word.name }}</li></a>

@@ -9,6 +9,13 @@
 <body>
 	<div class="container">
 		<header>
+            <div class="logo">
+            <a href="{% url "index" %}"><img src="{% static 'img/house.svg'%}" alt="" height="30" width="30"></a>
+                <a href="#"><img src="{% static 'img/lupa.svg'%}" alt="" height="30" width="30" class="lupa"></a>
+		</div>
+        <div class="breadcrumbs">
+
+        </div>
 			<div class="header-top">
 				<h1>{{ section.name }}</h1>
 			</div>

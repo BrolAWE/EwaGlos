@@ -9,15 +9,19 @@
 <body>
 	<header>
 		<div class="logo">
-
+            <a href="{% url "index" %}"><img src="{% static 'img/house.svg'%}" alt="" height="30" width="30"></a>
+            <a href="#"><img src="{% static 'img/lupa.svg'%}" alt="" height="30" width="30" class="lupa"></a>
 		</div>
-		<div class="section">
+        <div class="breadcrumbs">
+
+        </div>
+	</header>
+    <div class="section">
 			<ul>
                 {% for subsection in subsections %}
                     <a href="{% url "subsection" subsection.pk %}" style="background-color: {{ subsection.colour }}"><li>{{ subsection.name }}</li></a>
                 {% endfor %}
 			</ul>
 		</div>
-	</header>
 </body>
 </html>

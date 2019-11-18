@@ -21,11 +21,17 @@ class Section(models.Model):
     name = models.CharField(max_length=100, help_text="Use the following format: <em>Name of the section</em>.")
     color = models.CharField(max_length=7, help_text="Use the following format: <em>#00FF00</em>.")
 
+    def __str__(self):
+        return "{0}, {1}".format(self.pk, self.name)
+
 
 class Subsection(models.Model):
     section = models.ForeignKey(Section, on_delete=models.CASCADE, db_column="section")
     name = models.CharField(max_length=100, help_text="Use the following format: <em>Name of the subsection</em>.")
     color = models.CharField(max_length=7, help_text="Use the following format: <em>#00FF00</em>.")
+
+    def __str__(self):
+        return "{0}, {1}".format(self.pk, self.name)
 
 
 class Word(models.Model):
@@ -34,6 +40,9 @@ class Word(models.Model):
     definition = models.TextField(help_text="Write down the whole definition.")
     comment = models.TextField(help_text="Write some notes about the exhibit in the picture")
 
+    def __str__(self):
+        return "{0}, {1}".format(self.pk, self.name)
+
 
 class WordTranslation(models.Model):
     word = models.ForeignKey(Word, on_delete=models.CASCADE)
@@ -41,6 +50,9 @@ class WordTranslation(models.Model):
     name = models.CharField(max_length=100, help_text="Write down the translation.")
     definition = models.TextField(help_text="Write down the whole definition.")
     comment = models.TextField(help_text="Write some notes about the exhibit in the picture")
+
+    def __str__(self):
+        return "{0}, {1}".format(self.pk, self.name)
 
 
 class SectionTranslation(models.Model):
@@ -58,4 +70,7 @@ class SubsectionTranslation(models.Model):
 class CloseSenseWord(models.Model):
     word = models.ForeignKey(Word, on_delete=models.CASCADE, help_text="Choose from the list the word", related_name="word")
     close_sense = models.ForeignKey(Word, on_delete=models.CASCADE,
-                                    help_text="Choose from the list close sense word", related_name="close_sense")
+                                    help_text="Choose from the list the close sense word", related_name="close_sense")
+
+    def __str__(self):
+        return "{0}, {1}".format(self.pk, self.name)

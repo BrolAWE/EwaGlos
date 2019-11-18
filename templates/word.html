@@ -38,7 +38,7 @@
                     <div class="sinonimi">
                     <ul>
                         {% for close_sense_word in close_sense_words %}
-                        <a href="{% url "word" close_sense_word.pk word_translation.language %}"><li>>{{ close_sense_word.name }}</li></a>
+                        <a href="{% url "word" close_sense_word.pk word_translation.language %}"><li>{{ close_sense_word.name }}</li></a>
                         {% endfor %}
                     </ul>
                     </div>
@@ -116,7 +116,7 @@
                 <div class="sinonimi">
                     <ul>
                         {% for close_sense_translation in close_sense_translations %}
-                        <a href="{% url "word" close_sense_translation.word.pk word_translation.language %}"><li>>{{ close_sense_translation.name }}</li></a>
+                        <a href="{% url "word" close_sense_translation.word.pk word_translation.language %}"><li>{{ close_sense_translation.name }}</li></a>
                         {% endfor %}
                     </ul>
                     </div>

@@ -231,6 +231,9 @@ span {
 	line-height: 25px;
 	font-weight: 600;
 }
+.sinonimi ul li:hover:after {
+  content: "<";
+}
 @media screen and (max-width: 970px) {
 		.list-word-language ul li {
 		text-transform: uppercase;

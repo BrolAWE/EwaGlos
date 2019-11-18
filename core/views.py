@@ -2,7 +2,18 @@ from django.http import Http404
 from django.shortcuts import render
 
 # Create your views here.
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
 from core.models import *
+from core.serializers import SectionSerializer
+
+
+class SectionView(APIView):
+    def get(self, request):
+        sections = Section.objects.all()
+        serializer = SectionSerializer(sections, many="True")
+        return Response({"sections": serializer.data})
 
 
 def word(request, pk, lan):

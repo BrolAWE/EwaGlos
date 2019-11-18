@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from core.models import *
-from core.serializers import SectionSerializer
+from core.serializers import SectionSerializer, SubsectionSerializer
 
 
 class SectionView(APIView):
@@ -14,6 +14,14 @@ class SectionView(APIView):
         sections = Section.objects.all()
         serializer = SectionSerializer(sections, many="True")
         return Response({"sections": serializer.data})
+
+
+class SubsectionView(APIView):
+    def get(self, *args, **kwargs):
+        pk = kwargs.get('pk')
+        subsections = Subsection.objects.filter(section=pk)
+        serializer = SubsectionSerializer(subsections, many="True")
+        return Response({"subsections": serializer.data})
 
 
 def word(request, pk, lan):

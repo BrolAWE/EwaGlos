@@ -134,7 +134,7 @@
 					<div class="list-word-language">
 						<ul>
                             {% for wordtranslation in word_translations %}
-                                <li>{{ wordtranslation.name }}</li>
+                                <li><a href="{% url "word" word.pk wordtranslation.language %}">{{ wordtranslation.name }}</a></li>
                             {% endfor %}
 						</ul>
 					</div>

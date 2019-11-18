@@ -25,4 +25,5 @@ urlpatterns = [
     path('section/<int:pk>', views.section, name="section"),
     path('subsection/<int:pk>', views.subsection, name="subsection"),
     path('api/section', views.SectionView.as_view(), name="section_api"),
+    path('api/subsection/<int:pk>', views.SubsectionView.as_view(), name="subsection_api"),
 ]

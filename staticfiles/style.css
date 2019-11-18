@@ -224,16 +224,12 @@ span {
 	}
 }
 .sinonimi {
-    width: 100%;
-    height: 30px;
-    font-size: 26px;
-}
-.sinonimi ul li {
-  display: block;
-  color: black;
-}
-.sinonimi ul li:hover {
-  color: rgb(237,1,140);
+	padding-left: 10px;
+	padding-right: 10px;
+	margin: auto;
+	text-align: justify;
+	line-height: 25px;
+	font-weight: 600;
 }
 @media screen and (max-width: 970px) {
 		.list-word-language ul li {

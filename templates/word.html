@@ -38,11 +38,12 @@
                     <div class="sinonimi">
                     <ul>
                         {% for close_sense_word in close_sense_words %}
-                        <a href="{% url "word" close_sense_word.pk word_translation.language %}"><li>{{ close_sense_word.name }}</li></a>
+                        <a href="{% url "word" close_sense_word.pk word_translation.language %}"><li>>{{ close_sense_word.name }}</li></a>
                         {% endfor %}
                     </ul>
                     </div>
 				</div>
+
 				<div class="ne-ru-word">
 					<div class="header-name">
 						<div class="name">
@@ -111,14 +112,14 @@
                             {% endif %}
                         </span>
                         {{ word_translation.comment }}
-                    <div class="sinonimi">
+					</div>
+                <div class="sinonimi">
                     <ul>
                         {% for close_sense_translation in close_sense_translations %}
-                        <a href="{% url "word" close_sense_translation.word.pk word_translation.language %}"><li>{{ close_sense_translation.name }}</li></a>
+                        <a href="{% url "word" close_sense_translation.word.pk word_translation.language %}"><li>>{{ close_sense_translation.name }}</li></a>
                         {% endfor %}
                     </ul>
                     </div>
-					</div>
 
 				</div>
 				<div class="language">

@@ -20,10 +20,11 @@ from core import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name="index"),
+    path('', views.sections, name="sections"),
+    path('subsections/<int:pk>', views.subsections, name="subsections"),
+    path('words/<int:pk>', views.words, name="words"),
     path('word/<int:pk>/<str:lan>', views.word, name="word"),
-    path('section/<int:pk>', views.section, name="section"),
-    path('subsection/<int:pk>', views.subsection, name="subsection"),
-    path('api/section', views.SectionView.as_view(), name="section_api"),
-    path('api/subsection/<int:pk>', views.SubsectionView.as_view(), name="subsection_api"),
+    path('api/sections', views.SectionsView.as_view(), name="sections_api"),
+    path('api/subsections/<int:pk>', views.SubsectionsView.as_view(), name="subsections_api"),
+    path('api/words/<int:pk>', views.WordsView.as_view(), name="words_api"),
 ]

@@ -6,22 +6,53 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from core.models import *
-from core.serializers import SectionSerializer, SubsectionSerializer
+from core.serializers import SectionsSerializer, SubsectionsSerializer, WordsSerializer
 
 
-class SectionView(APIView):
+class SectionsView(APIView):
     def get(self, request):
         sections = Section.objects.all()
-        serializer = SectionSerializer(sections, many="True")
+        serializer = SectionsSerializer(sections, many="True")
         return Response({"sections": serializer.data})
 
 
-class SubsectionView(APIView):
+class SubsectionsView(APIView):
     def get(self, *args, **kwargs):
         pk = kwargs.get('pk')
         subsections = Subsection.objects.filter(section=pk)
-        serializer = SubsectionSerializer(subsections, many="True")
+        serializer = SubsectionsSerializer(subsections, many="True")
         return Response({"subsections": serializer.data})
+
+
+class WordsView(APIView):
+    def get(self, *args, **kwargs):
+        pk = kwargs.get('pk')
+        words = Word.objects.filter(subsection=pk)
+        serializer = WordsSerializer(words, many="True")
+        return Response({"words": serializer.data})
+
+
+def sections(request):
+    sections = Section.objects.all()
+    return render(request, 'sections.html', context={
+        'sections': sections,
+    })
+
+
+def subsections(request, pk):
+    subsections = Subsection.objects.filter(section=pk)
+    return render(request, 'subsections.html', context={
+        'subsections': subsections,
+    })
+
+
+def words(request, pk):
+    section = Section.objects.get(pk=pk)
+    words = Word.objects.filter(subsection=pk)
+    return render(request, 'words.html', context={
+        'words': words,
+        'section': section,
+    })
 
 
 def word(request, pk, lan):
@@ -45,27 +76,4 @@ def word(request, pk, lan):
         'word_translations': word_translations,
         'close_sense_words': close_sense_words,
         'close_sense_translations': close_sense_translations
-    })
-
-
-def index(request):
-    sections = Section.objects.all()
-    return render(request, 'index.html', context={
-        'sections': sections,
-    })
-
-
-def section(request, pk):
-    subsections = Subsection.objects.filter(section=pk)
-    return render(request, 'section.html', context={
-        'subsections': subsections,
-    })
-
-
-def subsection(request, pk):
-    section = Section.objects.get(pk=pk)
-    words = Word.objects.filter(subsection=pk)
-    return render(request, 'subsection.html', context={
-        'words': words,
-        'section': section,
     })

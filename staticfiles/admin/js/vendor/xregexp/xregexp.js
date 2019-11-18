@@ -230,7 +230,7 @@ XRegExp = XRegExp || (function (undef) {
                 if ((t.scope === "all" || t.scope === scope) && (!t.trigger || t.trigger.call(context))) {
                     t.pattern.lastIndex = pos;
                     match = fixed.exec.call(t.pattern, pattern); // Fixed `exec` here allows use of named backreferences, etc.
-                    if (match && match.index === pos) {
+                    if (match && match.sections === pos) {
                         result = {
                             output: t.handler.call(context, match, scope),
                             match: match
@@ -505,7 +505,7 @@ XRegExp = XRegExp || (function (undef) {
             match;
         r2.lastIndex = pos = pos || 0;
         match = fixed.exec.call(r2, str); // Fixed `exec` required for `lastIndex` fix, etc.
-        if (sticky && match && match.index !== pos) {
+        if (sticky && match && match.sections !== pos) {
             match = null;
         }
         if (regex.global) {
@@ -540,7 +540,7 @@ XRegExp = XRegExp || (function (undef) {
             match;
         while ((match = self.exec(str, regex, pos))) {
             callback.call(context, match, ++i, str, regex);
-            pos = match.index + (match[0].length || 1);
+            pos = match.sections + (match[0].length || 1);
         }
         return context;
     };
@@ -1104,13 +1104,13 @@ XRegExp = XRegExp || (function (undef) {
          */
         limit = (limit === undef ? -1 : limit) >>> 0;
         self.forEach(str, separator, function (match) {
-            if ((match.index + match[0].length) > lastLastIndex) { // != `if (match[0].length)`
-                output.push(str.slice(lastLastIndex, match.index));
-                if (match.length > 1 && match.index < str.length) {
+            if ((match.sections + match[0].length) > lastLastIndex) { // != `if (match[0].length)`
+                output.push(str.slice(lastLastIndex, match.sections));
+                if (match.length > 1 && match.sections < str.length) {
                     Array.prototype.push.apply(output, match.slice(1));
                 }
                 lastLength = match[0].length;
-                lastLastIndex = match.index + lastLength;
+                lastLastIndex = match.sections + lastLength;
             }
         });
         if (lastLastIndex === str.length) {
@@ -1162,7 +1162,7 @@ XRegExp = XRegExp || (function (undef) {
     add(/(?:\(\?#[^)]*\))+/,
         function (match) {
             // Keep tokens separated unless the following token is a quantifier
-            return nativ.test.call(quantifier, match.input.slice(match.index + match[0].length)) ? "" : "(?:)";
+            return nativ.test.call(quantifier, match.input.slice(match.sections + match[0].length)) ? "" : "(?:)";
         });
 
 /* Named backreference: \k<name>
@@ -1171,7 +1171,7 @@ XRegExp = XRegExp || (function (undef) {
     add(/\\k<([\w$]+)>/,
         function (match) {
             var index = isNaN(match[1]) ? (lastIndexOf(this.captureNames, match[1]) + 1) : +match[1],
-                endIndex = match.index + match[0].length;
+                endIndex = match.sections + match[0].length;
             if (!index || index > this.captureNames.length) {
                 throw new SyntaxError("backreference to undefined group " + match[0]);
             }
@@ -1186,7 +1186,7 @@ XRegExp = XRegExp || (function (undef) {
     add(/(?:\s+|#.*)+/,
         function (match) {
             // Keep tokens separated unless the following token is a quantifier
-            return nativ.test.call(quantifier, match.input.slice(match.index + match[0].length)) ? "" : "(?:)";
+            return nativ.test.call(quantifier, match.input.slice(match.sections + match[0].length)) ? "" : "(?:)";
         },
         {
             trigger: function () {
@@ -1967,7 +1967,7 @@ XRegExp = XRegExp || (function (undef) {
             rightMatch = XRegExp.exec(str, right, delimEnd);
             // Keep the leftmost match only
             if (leftMatch && rightMatch) {
-                if (leftMatch.index <= rightMatch.index) {
+                if (leftMatch.sections <= rightMatch.sections) {
                     rightMatch = null;
                 } else {
                     leftMatch = null;
@@ -1984,7 +1984,7 @@ XRegExp = XRegExp || (function (undef) {
             * Doesn't include the sticky mode special case
             * Loop ends after the first completed match if `!global` */
             if (leftMatch || rightMatch) {
-                delimStart = (leftMatch || rightMatch).index;
+                delimStart = (leftMatch || rightMatch).sections;
                 delimEnd = delimStart + (leftMatch || rightMatch)[0].length;
             } else if (!openTokens) {
                 break;

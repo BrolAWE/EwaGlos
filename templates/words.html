@@ -9,11 +9,11 @@
 <body>
 	<header>
 		<div class="logo">
-            <a href="{% url "index" %}"><img src="{% static 'img/house.svg'%}" alt="" height="30" width="30"></a>
+            <a href="{% url "sections" %}"><img src="{% static 'img/house.svg'%}" alt="" height="30" width="30"></a>
 		</div>
         <div class="breadcrumbs">
             <ul>
-            <a href="{% url "index" %}"><img src="{% static 'img/house.svg'%}" alt="" height="30" width="30"></a> > <a href="{% url "section" section.pk %}"><li>{{ section.name }}</li></a> >
+            <a href="{% url "sections" %}"><img src="{% static 'img/house.svg'%}" alt="" height="30" width="30"></a> > <a href="{% url "subsections" section.pk %}"><li>{{ section.name }}</li></a> >
             </ul>
         </div>
     	</header>

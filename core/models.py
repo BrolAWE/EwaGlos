@@ -77,6 +77,3 @@ class CloseSenseWord(models.Model):
     word = models.ForeignKey(Word, on_delete=models.CASCADE, help_text="Choose from the list the word", related_name="word")
     close_sense = models.ForeignKey(Word, on_delete=models.CASCADE,
                                     help_text="Choose from the list the close sense word", related_name="close_sense")
-
-    def __str__(self):
-        return "{0}, {1}".format(self.pk, self.name)

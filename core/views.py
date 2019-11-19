@@ -8,12 +8,14 @@ from rest_framework.views import APIView
 from core.models import *
 from core.serializers import SectionsSerializer, SubsectionsSerializer, WordsSerializer
 
+
 def index(request):
     return render(request, 'index.html')
 
 
 def about(request):
     return render(request, 'about.html')
+
 
 def sections(request):
     sections = Section.objects.all()

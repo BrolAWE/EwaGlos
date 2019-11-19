@@ -22,7 +22,7 @@
     <div class="section">
 			<ul>
                 {% for word in words %}
-                    <a href="{% url "word" word.pk "RU" %}"><li>{{ word.name }}</li></a>
+                    <a href="{% url "word" word.pk "RU" %}"><li><img src="{{ word.image.url }}" alt="" height="30" width="30">{{ word.name }}</li></a>
                 {% endfor %}
 			</ul>
 		</div>

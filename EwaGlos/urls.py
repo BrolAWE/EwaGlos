@@ -29,4 +29,5 @@ urlpatterns = [
     path('api/sections', views.SectionsView.as_view(), name="sections_api"),
     path('api/subsections/<int:pk>', views.SubsectionsView.as_view(), name="subsections_api"),
     path('api/words/<int:pk>', views.WordsView.as_view(), name="words_api"),
+    path('api/word/<int:pk>/<str:lan>', views.WordView.as_view(), name="api_word"),
 ]

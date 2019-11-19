@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from core.models import *
-from core.serializers import SectionsSerializer, SubsectionsSerializer, WordsSerializer
+from core.serializers import SectionsSerializer, SubsectionsSerializer, WordsSerializer, WordSerializer
 
 
 def index(request):
@@ -85,3 +85,11 @@ class WordsView(APIView):
         words = Word.objects.filter(subsection=pk)
         serializer = WordsSerializer(words, many="True")
         return Response({"words": serializer.data})
+
+
+class WordView(APIView):
+    def get(self, *args, **kwargs):
+        pk = kwargs.get('pk')
+        word = Word.objects.get(pk=pk)
+        serializer = WordSerializer(word)
+        return Response({"word": serializer.data})

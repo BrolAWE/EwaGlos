@@ -22,10 +22,12 @@
         </div>
 		</header>
 		<main>
+            {% if word.image.url != None %}
             <div class="image">
 				<img src="{{ word.image.url }}" alt="" width="750" height="450">
 				<span>{{ word.image_description }}</span>
 			</div>
+            {% endif %}
 			<div class="words">
 				<div class="ru-word">
 					<div class="header-name">

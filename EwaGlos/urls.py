@@ -20,7 +20,9 @@ from core import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.sections, name="sections"),
+    path('', views.index, name="index"),
+    path('about', views.about, name="about"),
+    path('sections', views.sections, name="sections"),
     path('subsections/<int:pk>', views.subsections, name="subsections"),
     path('words/<int:pk>', views.words, name="words"),
     path('word/<int:pk>/<str:lan>', views.word, name="word"),

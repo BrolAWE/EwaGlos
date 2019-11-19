@@ -8,29 +8,12 @@ from rest_framework.views import APIView
 from core.models import *
 from core.serializers import SectionsSerializer, SubsectionsSerializer, WordsSerializer
 
-
-class SectionsView(APIView):
-    def get(self, request):
-        sections = Section.objects.all()
-        serializer = SectionsSerializer(sections, many="True")
-        return Response({"sections": serializer.data})
+def index(request):
+    return render(request, 'index.html')
 
 
-class SubsectionsView(APIView):
-    def get(self, *args, **kwargs):
-        pk = kwargs.get('pk')
-        subsections = Subsection.objects.filter(section=pk)
-        serializer = SubsectionsSerializer(subsections, many="True")
-        return Response({"subsections": serializer.data})
-
-
-class WordsView(APIView):
-    def get(self, *args, **kwargs):
-        pk = kwargs.get('pk')
-        words = Word.objects.filter(subsection=pk)
-        serializer = WordsSerializer(words, many="True")
-        return Response({"words": serializer.data})
-
+def about(request):
+    return render(request, 'about.html')
 
 def sections(request):
     sections = Section.objects.all()
@@ -77,3 +60,26 @@ def word(request, pk, lan):
         'close_sense_words': close_sense_words,
         'close_sense_translations': close_sense_translations
     })
+
+
+class SectionsView(APIView):
+    def get(self, request):
+        sections = Section.objects.all()
+        serializer = SectionsSerializer(sections, many="True")
+        return Response({"sections": serializer.data})
+
+
+class SubsectionsView(APIView):
+    def get(self, *args, **kwargs):
+        pk = kwargs.get('pk')
+        subsections = Subsection.objects.filter(section=pk)
+        serializer = SubsectionsSerializer(subsections, many="True")
+        return Response({"subsections": serializer.data})
+
+
+class WordsView(APIView):
+    def get(self, *args, **kwargs):
+        pk = kwargs.get('pk')
+        words = Word.objects.filter(subsection=pk)
+        serializer = WordsSerializer(words, many="True")
+        return Response({"words": serializer.data})

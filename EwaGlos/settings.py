@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'cloudinary',
     'core',
 ]
 
@@ -83,6 +84,14 @@ DATABASES = {
     'default': dj_database_url.config(
         default=config('DATABASE_URL')
     )}
+
+
+
+CLOUDINARY = {
+  'cloud_name': config('CLOUDINARY_CLOUD_NAME'),
+  'api_key': config('CLOUDINARY_API_KEY'),
+  'api_secret': config('CLOUDINARY_API_SECRET'),
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

@@ -14,7 +14,7 @@
         <div class="breadcrumbs">
             <ul>
             <a href="{% url "index" %}"><img src="{% static 'img/house.svg'%}" alt="" height="30" width="30"></a> >
-                <a href="{% url "sections" %}"><li>Sections</li></a> >
+                <a href="{% url "sections" %}"><li>Секции</li></a> >
                 <a href="{% url "subsections" section.pk %}"><li>{{ section.name }}</li></a> >
             </ul>
         </div>
@@ -22,7 +22,7 @@
     <div class="section">
 			<ul>
                 {% for word in words %}
-                    <a href="{% url "word" word.pk "RU" %}"><li><img src="{{ word.image.url }}" alt="" height="30" width="30">{{ word.name }}</li></a>
+                    <a href="{% url "word" word.pk "EN" %}"><li><img src="{{ word.image.url }}" alt="" height="30" width="30">{{ word.name }}</li></a>
                 {% endfor %}
 			</ul>
 		</div>

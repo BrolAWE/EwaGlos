@@ -42,8 +42,8 @@ class Word(models.Model):
     name = models.CharField(max_length=100, help_text="Use the following format: <em>Word</em>.")
     definition = models.TextField(help_text="Write down the whole definition.")
     comment = models.TextField(help_text="Write some notes about the exhibit in the picture")
-    image = cloudinary.models.CloudinaryField('image', null=True)
-    image_description = models.TextField(help_text="Write the description of the picture", null=True)
+    image = cloudinary.models.CloudinaryField('image', blank=True, null=True)
+    image_description = models.TextField(help_text="Write the description of the picture", blank=True, null=True)
 
     def __str__(self):
         return "{0}, {1}".format(self.pk, self.name)
@@ -55,7 +55,7 @@ class WordTranslation(models.Model):
     name = models.CharField(max_length=100, help_text="Write down the translation.")
     definition = models.TextField(help_text="Write down the whole definition.")
     comment = models.TextField(help_text="Write some notes about the exhibit in the picture")
-    image_description = models.TextField(help_text="Write the description translation of the picture", null=True)
+    image_description = models.TextField(help_text="Write the description translation of the picture", blank=True, null=True)
 
     def __str__(self):
         return "{0}, {1}".format(self.pk, self.name)

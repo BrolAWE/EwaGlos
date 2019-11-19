@@ -46,7 +46,7 @@ def word(request, pk, lan):
         subsection = Subsection.objects.get(pk=word.subsection.pk)
         section = Section.objects.get(pk=subsection.section.pk)
         word_translation = WordTranslation.objects.get(word=pk, language=lan)
-        word_translations = WordTranslation.objects.filter(word=pk).exclude(language=lan).exclude(language="EN")
+        word_translations = WordTranslation.objects.filter(word=pk).exclude(language=lan).exclude(language="RU")
         close_senses = CloseSenseWord.objects.filter(word=pk)
         close_sense_words = Word.objects.filter(pk__in=close_senses.values_list("close_sense"))
         close_sense_translations = WordTranslation.objects.filter(

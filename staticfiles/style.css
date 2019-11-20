@@ -154,7 +154,48 @@ span {
   	display: block;
   	padding-left: 20px;
   	padding-bottom: 16px;
+	overflow: hidden;
+	white-space: nowrap;
+	position: relative;
+	text-overflow: ellipsis;
 }
+.list-word-language ul li:after {
+	content: ''; /* Выводим элемент */
+    position: absolute; /* Абсолютное позиционирование */
+    right: -10px; top: 0; /* Положение элемента */
+    width: 10px; /* Ширина градиента*/
+    height: 100%; /* Высота родителя */
+	background: -moz-linear-gradient(left, rgba(255,255,255, 0.2), #fff 100%);
+    background: -webkit-linear-gradient(left, rgba(255,255,255, 0.2), #fff 100%);
+    background: -o-linear-gradient(left, rgba(255,255,255, 0.2), #fff 100%);
+    background: -ms-linear-gradient(left, rgba(255,255,255, 0.2), #fff 100%);
+    background: linear-gradient(to right, rgba(255,255,255, 0.2), #fff 100%);
+	/*
+
+
+
+
+
+
+
+
+
+	пиздец потом доделаю
+
+
+
+
+
+
+
+
+
+
+	*/
+}
+.list-word-language ul li:hover {
+    white-space: normal; /* Обычный перенос текста */
+   }
 .section {
 	width: 100%;
 	margin: 0 auto;
@@ -194,8 +235,39 @@ span {
 }
 .section ul a li {
 	text-align: center;
+	margin: 0 auto;
 	display: block;
 	margin-top: 140px;
+}
+.section ul a li span {
+	padding: 5px;
+	border-radius: 10px;
+	background-color: #fff;
+	opacity: 0.9;
+}
+.section_about {
+	width: 100%;
+	margin: 0 auto;
+	min-height:100px;
+	margin-top: 60px;
+	text-align: center;
+}
+.section_about h1 {
+	margin: 0 auto;
+	margin-bottom: 30px;
+}
+.section_about h4 {
+	float: right;
+	text-align: left;
+	font-weight: 500;
+	font-size: 13px;
+	margin-top: 25px;
+	font-style: italic;
+}
+.section_about p {
+	margin: 0 40px 0 40px;
+	line-height: 1.3em;
+	font-size: 15px;
 }
 .breadcrumbs {
     width: 100%;

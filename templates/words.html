@@ -19,13 +19,12 @@
             </ul>
         </div>
     	</header>
-    <div class="section">
+        <div class="section">
 			<ul>
                 {% for word in words %}
-                    <a href="{% url "word" word.pk "EN" %}"><li><img src="{{ word.image.url }}" alt="" height="30" width="30">{{ word.name }}</li></a>
+                    <a href="{% url "word" word.pk "EN" %}" style="background-image: url({{ word.image.url }}); background-size: cover;"><li><span>{{ word.name }}</span></li></a>
                 {% endfor %}
 			</ul>
 		</div>
-	</header>
 </body>
 </html>

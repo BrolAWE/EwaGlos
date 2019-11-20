@@ -5,17 +5,22 @@
 	<meta charset="UTF-8">
 	<title>EwaGlos</title>
 	<link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="icon" href="{% static 'img/certification.ico'%}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'img/certification.ico'%}" type="image/x-icon">
 </head>
 <body>
 	<header>
 		<div class="logo">
-            <a href="{% url "index" %}"><img src="{% static 'img/house.svg'%}" alt="" height="30" width="30"></a>
+            <a href="{% url "index" %}"><img class="logo_svg"  src="{% static 'img/glossary.svg'%}" alt="" height="30" width="30"></a>
+            <div class="search">
+                <input type="search" > <img src="{% static 'img/search.svg' %}" alt="" height="23" width="24">
+            </div>
 		</div>
         <div class="breadcrumbs">
             <ul>
-            <a href="{% url "index" %}"><img src="{% static 'img/house.svg'%}" alt="" height="30" width="30"></a> >
-                <a href="{% url "sections" %}"><li>Секции</li></a> >
-                <a href="{% url "subsections" section.pk %}"><li>{{ section.name }}</li></a> >
+            <a href="{% url "index" %}"><img src="{% static 'img/house.svg'%}" alt="" height="30" width="30"></a> <img src="{% static 'img/arrow.svg'%}" alt="" height="22" width="22" style="margin: 4px">
+                <a href="{% url "sections" %}"><li>Секции</li></a> <img src="{% static 'img/arrow.svg'%}" alt="" height="22" width="22" style="margin: 4px">
+                <a href="{% url "subsections" section.pk %}"><li>{{ section.name }}</li></a> <img src="{% static 'img/arrow.svg'%}" alt="" height="22" width="22" style="margin: 4px">
             </ul>
         </div>
     	</header>

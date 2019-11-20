@@ -13,6 +13,8 @@ body {
 }
 header {
 	width: 100%;
+	position: sticky;
+	top: 0;
 }
 main {
 	min-height: 100%;
@@ -22,15 +24,19 @@ main {
 	height: 36px;
 	background-color: #999;
 }
-.logo a img {
+.search {
+	width: 225px;
+	float: right;
+	margin-top: 5px;
+	margin-right: 60px;
+}
+.search img {
+	float: right;
+}
+.logo_svg {
 	margin-top: 3px;
 	margin-left: 12px;
 	float: left;
-}
-.logo a .lupa {
-	float: right;
-	margin-top: 3px;
-	margin-right: 12px;
 }
 .container header .header-top {
 	background-color: #3c8830;
@@ -159,6 +165,9 @@ span {
 	position: relative;
 	text-overflow: ellipsis;
 }
+.list-word-language ul li a {
+	color: #000000;
+}
 .list-word-language ul li:after {
 	content: ''; /* Выводим элемент */
     position: absolute; /* Абсолютное позиционирование */
@@ -269,6 +278,30 @@ span {
 	line-height: 1.3em;
 	font-size: 15px;
 }
+.sinonimi ul a  {
+	color: #000000;
+}
+.sinonimi {
+	padding-left: 10px;
+	padding-right: 10px;
+	margin: auto;
+	text-align: justify;
+	line-height: 25px;
+	font-weight: 600;
+}
+.sinonimi ul a li:hover:after {
+	content: "<";
+	color: #3c3c3c;
+}
+.search input {
+	size: 150px;
+	width: 200px;
+	height: 24px;
+	padding: 5px;
+	float: left;
+	border: 1px solid black;
+	border-radius: 5px;
+}
 .breadcrumbs {
     width: 100%;
     height: 30px;
@@ -295,17 +328,7 @@ span {
 		margin-left:0;
 	}
 }
-.sinonimi {
-	padding-left: 10px;
-	padding-right: 10px;
-	margin: auto;
-	text-align: justify;
-	line-height: 25px;
-	font-weight: 600;
-}
-.sinonimi ul li:hover:after {
-  content: "<";
-}
+
 @media screen and (max-width: 970px) {
 		.list-word-language ul li {
 		text-transform: uppercase;

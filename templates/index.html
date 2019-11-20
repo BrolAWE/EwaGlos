@@ -5,18 +5,23 @@
 	<meta charset="UTF-8">
 	<title>EwaGlos</title>
 	<link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="icon" href="{% static 'img/certification.ico'%}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'img/certification.ico'%}" type="image/x-icon">
 </head>
 <body>
 	<header>
 		<div class="logo">
-            <a href="{% url "index" %}"><img src="{% static 'img/house.svg'%}" alt="" height="30" width="30"></a>
+            <a href="{% url "index" %}"><img class="logo_svg" src="{% static 'img/glossary.svg'%}" alt="" height="30" width="30"></a>
+            <div class="search">
+                <input type="search" > <img src="{% static 'img/search.svg' %}" alt="" height="23" width="24">
+            </div>
 		</div>
         <div class="breadcrumbs">
         </div>
 		<div class="section">
 			<ul>
-                <a href="{% url "sections" %}"><li>Открыть словарь</li></a>
-                <a href="{% url "about" %}"><li>О проекте</li></a>
+                <a href="{% url "sections" %}"><li><span>Открыть словарь</span></li></a>
+                <a href="{% url "about" %}"><li><span>О проекте</span></li></a>
 			</ul>
 		</div>
 	</header>

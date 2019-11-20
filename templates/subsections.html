@@ -18,15 +18,21 @@
 		</div>
         <div class="breadcrumbs">
             <ul>
-            <a href="{% url "index" %}"><img src="{% static 'img/house.svg'%}" alt="" height="30" width="30"></a> <img src="{% static 'img/arrow.svg'%}" alt="" height="22" width="22" style="margin: 4px">
-                <a href="{% url "sections" %}"><li>Секции</li></a> <img src="{% static 'img/arrow.svg'%}" alt="" height="22" width="22" style="margin: 4px">
+            <a href="{% url "index" %}"><img src="{% static 'img/house.svg'%}" alt="" height="30" width="30"></a>
+                <img src="{% static 'img/arrow.svg'%}" alt="" height="22" width="22" style="margin: 4px">
+                {% if lang == "RU" %}
+                <a href="{% url "sections" lang %}"><li>Секции</li></a>
+                {% elif lang == "EN" %}
+                <a href="{% url "sections" lang %}"><li>Sections</li></a>
+                {% endif %}
+                <img src="{% static 'img/arrow.svg'%}" alt="" height="22" width="22" style="margin: 4px">
             </ul>
         </div>
 	</header>
     <div class="section">
 			<ul>
                 {% for subsection in subsections %}
-                    <a href="{% url "words" subsection.pk %}" style="background-color: {{ subsection.color }}"><li><span>{{ subsection.name }}</span></li></a>
+                    <a href="{% url "words" lang subsection.subsection.pk %}" style="background-color: {{ subsection.subsection.color }}"><li><span>{{ subsection.name }}</span></li></a>
                 {% endfor %}
 			</ul>
 		</div>

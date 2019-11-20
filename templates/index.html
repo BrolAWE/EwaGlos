@@ -20,8 +20,13 @@
         </div>
 		<div class="section">
 			<ul>
-                <a href="{% url "sections" %}"><li><span>Открыть словарь</span></li></a>
-                <a href="{% url "about" %}"><li><span>О проекте</span></li></a>
+                {% if lang == "RU" %}
+                    <a href="{% url "sections" "RU" %}"><li><span>Открыть словарь</span></li></a>
+                    <a href="{% url "about" "RU" %}"><li><span>О проекте</span></li></a>
+                {% elif lang == "EN" %}
+                    <a href="{% url "sections" "EN" %}"><li><span>Open book</span></li></a>
+                    <a href="{% url "about" "EN" %}"><li><span>About</span></li></a>
+                {% endif %}
 			</ul>
 		</div>
 	</header>

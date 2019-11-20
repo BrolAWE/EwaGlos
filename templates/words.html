@@ -18,16 +18,19 @@
 		</div>
         <div class="breadcrumbs">
             <ul>
-            <a href="{% url "index" %}"><img src="{% static 'img/house.svg'%}" alt="" height="30" width="30"></a> <img src="{% static 'img/arrow.svg'%}" alt="" height="22" width="22" style="margin: 4px">
-                <a href="{% url "sections" %}"><li>Секции</li></a> <img src="{% static 'img/arrow.svg'%}" alt="" height="22" width="22" style="margin: 4px">
-                <a href="{% url "subsections" section.pk %}"><li>{{ section.name }}</li></a> <img src="{% static 'img/arrow.svg'%}" alt="" height="22" width="22" style="margin: 4px">
+            <a href="{% url "index" %}"><img src="{% static 'img/house.svg'%}" alt="" height="30" width="30"></a>
+                <img src="{% static 'img/arrow.svg'%}" alt="" height="22" width="22" style="margin: 4px">
+                <a href="{% url "sections" lang %}"><li>Секции</li></a>
+                <img src="{% static 'img/arrow.svg'%}" alt="" height="22" width="22" style="margin: 4px">
+                <a href="{% url "subsections" lang section.pk %}"><li>{{ section.name }}</li></a>
+                <img src="{% static 'img/arrow.svg'%}" alt="" height="22" width="22" style="margin: 4px">
             </ul>
         </div>
     	</header>
         <div class="section">
 			<ul>
                 {% for word in words %}
-                    <a href="{% url "word" word.pk "EN" %}" style="background-image: url({{ word.image.url }}); background-size: cover;"><li><span>{{ word.name }}</span></li></a>
+                    <a href="{% url "word" lang word.word.pk "EN" %}" style="background-image: url({{ word.word.image.url }}); background-size: cover;"><li><span>{{ word.name }}</span></li></a>
                 {% endfor %}
 			</ul>
 		</div>

@@ -19,10 +19,11 @@
 		</div>
         <div class="breadcrumbs">
             <ul>
-            <a href="{% url "index" %}"><img src="{% static 'img/house.svg'%}" alt="" height="30" width="30"></a> <img src="{% static 'img/arrow.svg'%}" alt="" height="22" width="22" style="margin: 4px">
-                <a href="{% url "sections" %}"><li>Секции</li></a> <img src="{% static 'img/arrow.svg'%}" alt="" height="22" width="22" style="margin: 4px">
-                <a href="{% url "subsections" section.pk %}"><li>{{ section.name }}</li></a> <img src="{% static 'img/arrow.svg'%}" alt="" height="22" width="22" style="margin: 4px">
-                <a href="{% url "words" subsection.pk %}"><li>{{ subsection.name }}</li></a> <img src="{% static 'img/arrow.svg'%}" alt="" height="22" width="22" style="margin: 4px">
+            <a href="{% url "index_translate" wordtrans.language %}"><img src="{% static 'img/house.svg'%}" alt="" height="30" width="30"></a>
+                <img src="{% static 'img/arrow.svg'%}" alt="" height="22" width="22" style="margin: 4px">
+                <a href="{% url "sections" wordtrans.language %}"><li>Секции</li></a> <img src="{% static 'img/arrow.svg'%}" alt="" height="22" width="22" style="margin: 4px">
+                <a href="{% url "subsections" wordtrans.language section.pk %}"><li>{{ section.name }}</li></a> <img src="{% static 'img/arrow.svg'%}" alt="" height="22" width="22" style="margin: 4px">
+                <a href="{% url "words" wordtrans.language subsection.pk %}"><li>{{ subsection.name }}</li></a> <img src="{% static 'img/arrow.svg'%}" alt="" height="22" width="22" style="margin: 4px">
             </ul>
         </div>
 		</header>
@@ -40,19 +41,27 @@
 							<h3>{{ word.name }}</h3>
 						</div>
 						<div class="name-language">
-							<h3>RU</h3>
+							<h3>{{ wordtrans.language }}</h3>
 						</div>
 					</div>
 					<div class="definition">
-						<span>Определение:</span> {{ word.definition }}
+                        {% if wordtrans.language == "RU" %}
+						<span>Определение:</span> {{ wordtrans.definition }}
+                        {% elif wordtrans.language == "EN" %}
+                        <span>Definition:</span> {{ wordtrans.definition }}
+                        {% endif %}
 					</div>
 					<div class="comment">
-						<span>Комментарий:</span> {{ word.comment }}
+                        {% if wordtrans.language == "RU" %}
+						<span>Комментарий:</span> {{ wordtrans.comment }}
+                        {% elif wordtrans.language == "EN" %}
+                        <span>Comment:</span> {{ wordtrans.comment }}
+                        {% endif %}
 					</div>
                     <div class="sinonimi">
                     <ul>
                         {% for close_sense_word in close_sense_words %}
-                        <a href="{% url "word" close_sense_word.pk word_translation.language %}"><li>{{ close_sense_word.name }}</li></a>
+                        <a href="{% url "word" wordtrans.language close_sense_word.pk word_translation.language %}"><li>{{ close_sense_word.name }}</li></a>
                         {% endfor %}
                     </ul>
                     </div>
@@ -130,7 +139,7 @@
                 <div class="sinonimi">
                     <ul>
                         {% for close_sense_translation in close_sense_translations %}
-                        <a href="{% url "word" close_sense_translation.word.pk word_translation.language %}"><li>{{ close_sense_translation.name }}</li></a>
+                        <a href="{% url "word" wordtrans.language close_sense_translation.word.pk word_translation.language %}"><li>{{ close_sense_translation.name }}</li></a>
                         {% endfor %}
                     </ul>
                     </div>
@@ -141,14 +150,14 @@
 					<div class="list-language">
 						<ul>
                             {% for wordtranslation in word_translations %}
-                                <li><a href="{% url "word" word.pk wordtranslation.language %}">{{ wordtranslation.language }}</a></li>
+                                <li><a href="{% url "word" wordtrans.language word.pk wordtranslation.language %}">{{ wordtranslation.language }}</a></li>
                             {% endfor %}
 						</ul>
 					</div>
 					<div class="list-word-language">
 						<ul>
                             {% for wordtranslation in word_translations %}
-                                <li><a href="{% url "word" word.pk wordtranslation.language %}">{{ wordtranslation.name }}</a></li>
+                                <li><a href="{% url "word" wordtrans.language word.pk wordtranslation.language %}">{{ wordtranslation.name }}</a></li>
                             {% endfor %}
 						</ul>
 					</div>

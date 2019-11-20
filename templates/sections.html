@@ -18,14 +18,15 @@
 		</div>
         <div class="breadcrumbs">
             <ul>
-            <a href="{% url "index" %}"><img src="{% static 'img/house.svg'%}" alt="" height="30" width="30"></a> <img src="{% static 'img/arrow.svg'%}" alt="" height="22" width="22" style="margin: 4px">
+            <a href="{% url "index_translate" lang %}"><img src="{% static 'img/house.svg'%}" alt="" height="30" width="30"></a>
+                <img src="{% static 'img/arrow.svg'%}" alt="" height="22" width="22" style="margin: 4px">
             </ul>
         </div>
 	</header>
     <div class="section">
 			<ul>
                 {% for section in sections %}
-                    <a href="{% url "subsections" section.pk %}" style="background-color: {{ section.color }}"><li><span>{{ section.name }}</span></li></a>
+                    <a href="{% url "subsections"  lang section.section.pk %}" style="background-color: {{ section.section.color }}"><li><span>{{ section.name }}</span></li></a>
                 {% endfor %}
 			</ul>
 		</div>

@@ -11,7 +11,7 @@
 <body>
 	<header>
 		<div class="logo">
-            <a href="{% url "index" %}"><img class="logo_svg"  src="{% static 'img/glossary.svg'%}" alt="" height="30" width="30"></a>
+            <a href="{% url "index_translate" lang %}"><img class="logo_svg"  src="{% static 'img/glossary.svg'%}" alt="" height="30" width="30"></a>
             <div class="search">
                 <input type="search" > <img src="{% static 'img/search.svg' %}" alt="" height="23" width="24">
             </div>
@@ -23,7 +23,8 @@
         </div>
 	</header>
         <div class="section_about">
-			<h1>О нас</h1>
+            {% if lang == "RU" %}
+			<h1>О проекте</h1>
             <p>Как любая другая область профессиональной
 деятельности, реставрация обладает специальным языком
 – терминологией, или специальной лексикой, которая,
@@ -145,6 +146,9 @@
 профессор кафедры философии и социологии<br>
 Смоленского государственного университета,<br>
 Смоленск, декабрь 2018<br> </h4>
+            {% elif lang == "EN" %}
+            About
+            {% endif %}
 		</div>
 </body>
 </html>

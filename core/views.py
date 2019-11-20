@@ -9,52 +9,64 @@ from core.models import *
 from core.serializers import SectionsSerializer, SubsectionsSerializer, WordsSerializer, WordSerializer
 
 
-def index(request):
-    return render(request, 'index.html')
+def index(request, lang="RU"):
+    return render(request, 'index.html', context={
+        'lang': lang,
+    })
 
 
-def about(request):
-    return render(request, 'about.html')
+def about(request, lang):
+    return render(request, 'about.html', context={
+        'lang': lang,
+    })
 
 
-def sections(request):
-    sections = Section.objects.all()
+def sections(request, lang):
+    sections = SectionTranslation.objects.filter(language=lang)
     return render(request, 'sections.html', context={
         'sections': sections,
+        'lang': lang,
     })
 
 
-def subsections(request, pk):
-    subsections = Subsection.objects.filter(section=pk)
+def subsections(request, lang, pk):
+    subsection = Subsection.objects.filter(section=pk)
+    subsections = SubsectionTranslation.objects.filter(subsection__in=subsection.values_list("pk"), language=lang)
     return render(request, 'subsections.html', context={
         'subsections': subsections,
+        'lang': lang,
     })
 
 
-def words(request, pk):
+def words(request, lang, pk):
     section = Section.objects.get(pk=pk)
-    words = Word.objects.filter(subsection=pk)
+    word = Word.objects.filter(subsection=pk)
+    words = WordTranslation.objects.filter(word__in=word.values_list("pk"), language=lang)
     return render(request, 'words.html', context={
         'words': words,
         'section': section,
+        'lang': lang,
     })
 
 
-def word(request, pk, lan):
+def word(request, lang, pk, lan):
     try:
         word = Word.objects.get(pk=pk)
+        wordtrans = WordTranslation.objects.get(language=lang, word=pk)
         subsection = Subsection.objects.get(pk=word.subsection.pk)
         section = Section.objects.get(pk=subsection.section.pk)
         word_translation = WordTranslation.objects.get(word=pk, language=lan)
-        word_translations = WordTranslation.objects.filter(word=pk).exclude(language=lan).exclude(language="RU")
+        word_translations = WordTranslation.objects.filter(word=pk).exclude(language=lan).exclude(language=lang)
         close_senses = CloseSenseWord.objects.filter(word=pk)
-        close_sense_words = Word.objects.filter(pk__in=close_senses.values_list("close_sense"))
+        close_sense_words = WordTranslation.objects.filter(
+            word__in=close_senses.values_list("close_sense")).filter(language=lang)
         close_sense_translations = WordTranslation.objects.filter(
             word__in=close_senses.values_list("close_sense")).filter(language=lan)
     except Word.DoesNotExist:
         raise Http404
     return render(request, 'word.html', context={
         'word': word,
+        'wordtrans': wordtrans,
         'subsection': subsection,
         'section': section,
         'word_translation': word_translation,

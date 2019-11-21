@@ -11,14 +11,22 @@
 <body>
 	<header>
 		<div class="logo">
-            <a href="{% url "index" %}"><img class="logo_svg"  src="{% static 'img/glossary.svg'%}" alt="" height="30" width="30"></a>
+            <a href="{% url "index_translate" lang %}">
+                <img class="logo_svg"  src="{% static 'img/glossary.svg'%}" alt="" height="30" width="30">
+            </a>
             <div class="search">
                 <input type="search" > <img src="{% static 'img/search.svg' %}" alt="" height="23" width="24">
+            </div>
+            <div class="select_lan">
+                <a href="{% url "sections" "EN" %}"><img src="{% static 'img/us.svg' %}" alt="" height="30" width="30"></a>
+                <a href="{% url "sections" "RU" %}"><img src="{% static 'img/ru.svg' %}" alt="" height="30" width="30"></a>
             </div>
 		</div>
         <div class="breadcrumbs">
             <ul>
-            <a href="{% url "index_translate" lang %}"><img src="{% static 'img/house.svg'%}" alt="" height="30" width="30"></a>
+            <a href="{% url "index_translate" lang %}">
+                <img src="{% static 'img/house.svg'%}" alt="" height="30" width="30">
+            </a>
                 <img src="{% static 'img/arrow.svg'%}" alt="" height="22" width="22" style="margin: 4px">
             </ul>
         </div>
@@ -26,7 +34,13 @@
     <div class="section">
 			<ul>
                 {% for section in sections %}
-                    <a href="{% url "subsections"  lang section.section.pk %}" style="background-color: {{ section.section.color }}"><li><span>{{ section.name }}</span></li></a>
+                    <a href="{% url "subsections"  lang section.section.pk %}" style="background-color: {{ section.section.color }}">
+                        <li>
+                            <span>
+                                {{ section.name }}
+                            </span>
+                        </li>
+                    </a>
                 {% endfor %}
 			</ul>
 		</div>

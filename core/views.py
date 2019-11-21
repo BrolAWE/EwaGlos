@@ -33,16 +33,18 @@ def subsections(request, lang, pk):
     subsection = Subsection.objects.filter(section=pk)
     subsections = SubsectionTranslation.objects.filter(subsection__in=subsection.values_list("pk"), language=lang)
     return render(request, 'subsections.html', context={
+        'pk': pk,
         'subsections': subsections,
         'lang': lang,
     })
 
 
 def words(request, lang, pk):
-    section = Section.objects.get(pk=pk)
+    section = SectionTranslation.objects.get(section=pk, language=lang)
     word = Word.objects.filter(subsection=pk)
     words = WordTranslation.objects.filter(word__in=word.values_list("pk"), language=lang)
     return render(request, 'words.html', context={
+        'pk': pk,
         'words': words,
         'section': section,
         'lang': lang,
@@ -51,10 +53,14 @@ def words(request, lang, pk):
 
 def word(request, lang, pk, lan):
     try:
+        if lang == lan and lang == 'RU':
+            lan = 'EN'
+        elif lang == lan and lang == 'EN':
+            lan = 'RU'
         word = Word.objects.get(pk=pk)
         wordtrans = WordTranslation.objects.get(language=lang, word=pk)
-        subsection = Subsection.objects.get(pk=word.subsection.pk)
-        section = Section.objects.get(pk=subsection.section.pk)
+        subsection = SubsectionTranslation.objects.get(subsection=word.subsection.pk, language=lang)
+        section = SectionTranslation.objects.get(section=subsection.subsection.section.pk, language=lang)
         word_translation = WordTranslation.objects.get(word=pk, language=lan)
         word_translations = WordTranslation.objects.filter(word=pk).exclude(language=lan).exclude(language=lang)
         close_senses = CloseSenseWord.objects.filter(word=pk)
@@ -65,6 +71,7 @@ def word(request, lang, pk, lan):
     except Word.DoesNotExist:
         raise Http404
     return render(request, 'word.html', context={
+        'lang': lang,
         'word': word,
         'wordtrans': wordtrans,
         'subsection': subsection,

@@ -11,22 +11,44 @@
 <body>
 	<header>
 		<div class="logo">
-            <a href="{% url "index" %}"><img class="logo_svg" src="{% static 'img/glossary.svg'%}" alt="" height="30" width="30"></a>
+            <a href="{% url "index_translate" lang %}">
+                <img class="logo_svg" src="{% static 'img/glossary.svg'%}" alt="" height="30" width="30">
+            </a>
             <div class="search">
                 <input type="search" > <img src="{% static 'img/search.svg' %}" alt="" height="23" width="24">
+
             </div>
+            <div class="select_lan">
+                 <a href="{% url "index_translate" "EN" %}"><img src="{% static 'img/us.svg' %}" alt="" height="23" width="23"></a>
+                 <a href="{% url "index_translate" "RU" %}"><img src="{% static 'img/ru.svg' %}" alt="" height="23" width="23"></a>
+                </div>
 		</div>
         <div class="breadcrumbs">
         </div>
 		<div class="section">
 			<ul>
-                {% if lang == "RU" %}
-                    <a href="{% url "sections" "RU" %}"><li><span>Открыть словарь</span></li></a>
-                    <a href="{% url "about" "RU" %}"><li><span>О проекте</span></li></a>
-                {% elif lang == "EN" %}
-                    <a href="{% url "sections" "EN" %}"><li><span>Open book</span></li></a>
-                    <a href="{% url "about" "EN" %}"><li><span>About</span></li></a>
-                {% endif %}
+                    <a href="{% url "sections" "RU" %}">
+                        <li>
+                            <span>
+                                {% if lang == "RU" %}
+                                    Открыть словарь
+                                {% elif lang == "EN" %}
+                                    Open book
+                                {% endif %}
+                            </span>
+                        </li>
+                    </a>
+                    <a href="{% url "about" "RU" %}">
+                        <li>
+                            <span>
+                                {% if lang == "RU" %}
+                                    О проекте
+                                {% elif lang == "EN" %}
+                                    About
+                                {% endif %}
+                            </span>
+                        </li>
+                    </a>
 			</ul>
 		</div>
 	</header>

@@ -24,6 +24,14 @@ main {
 	height: 36px;
 	background-color: #999;
 }
+.select_lan {
+	float: right;
+	margin-left: 30px;
+	margin-top: 5px;
+}
+.select_lan a {
+	margin-right: 10px;
+}
 .search {
 	width: 225px;
 	float: right;

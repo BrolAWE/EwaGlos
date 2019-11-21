@@ -53,10 +53,6 @@ def words(request, lang, pk):
 
 def word(request, lang, pk, lan):
     try:
-        if lang == lan and lang == 'RU':
-            lan = 'EN'
-        elif lang == lan and lang == 'EN':
-            lan = 'RU'
         word = Word.objects.get(pk=pk)
         wordtrans = WordTranslation.objects.get(language=lang, word=pk)
         subsection = SubsectionTranslation.objects.get(subsection=word.subsection.pk, language=lang)

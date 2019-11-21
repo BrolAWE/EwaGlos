@@ -19,8 +19,20 @@
                     <input type="search" > <img src="{% static 'img/search.svg' %}" alt="" height="23" width="24">
                 </div>
                 <div class="select_lan">
-                <a href="{% url "word" "EN" word.pk wordtrans.language %}"><img src="{% static 'img/us.svg' %}" alt="" height="23" width="23"></a>
-                <a href="{% url "word" "RU" word.pk wordtrans.language %}"><img src="{% static 'img/ru.svg' %}" alt="" height="23" width="23"></a>
+                    {% if word_translation.language != "EN" %}
+                    <a href="{% url "word" "EN" word.pk word_translation.language %}">
+                    {% elif word_translation.language == "EN" %}
+                    <a href="{% url "word" "EN" word.pk "RU" %}">
+                    {% endif %}
+                    <img src="{% static 'img/us.svg' %}" alt="" height="23" width="23">
+                </a>
+                {% if word_translation.language != "RU" %}
+                <a href="{% url "word" "RU" word.pk word_translation.language %}">
+                {% elif word_translation.language == "RU" %}
+                 <a href="{% url "word" "RU" word.pk "EN" %}">
+                 {% endif %}
+                    <img src="{% static 'img/ru.svg' %}" alt="" height="23" width="23">
+                </a>
             </div>
 		</div>
         <div class="breadcrumbs">

@@ -50,7 +50,11 @@
         <div class="section">
 			<ul>
                 {% for word in words %}
+                    {% if lang == "RU" %}
                     <a href="{% url "word" lang word.word.pk "EN" %}" style="background-image: url({{ word.word.image.url }}); background-size: cover;">
+                    {% elif lang == "EN" %}
+                    <a href="{% url "word" lang word.word.pk "RU" %}" style="background-image: url({{ word.word.image.url }}); background-size: cover;">
+                    {% endif %}
                         <li>
                             <span>
                                 {{ word.name }}

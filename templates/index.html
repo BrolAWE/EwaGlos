@@ -37,7 +37,11 @@
                             </span>
                         </li>
                     </a>
+                    {% if lang == "RU" %}
                     <a href="{% url "about" "RU" %}">
+                    {% elif lang == "EN" %}
+                    <a href="{% url "about" "EN" %}">
+                    {% endif %}
                         <li>
                             <span>
                                 {% if lang == "RU" %}

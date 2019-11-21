@@ -26,7 +26,7 @@
         </div>
 		<div class="section">
 			<ul>
-                    <a href="{% url "sections" "RU" %}">
+                    <a href="{% url "sections" lang %}">
                         <li>
                             <span>
                                 {% if lang == "RU" %}
@@ -37,11 +37,7 @@
                             </span>
                         </li>
                     </a>
-                    {% if lang == "RU" %}
-                    <a href="{% url "about" "RU" %}">
-                    {% elif lang == "EN" %}
-                    <a href="{% url "about" "EN" %}">
-                    {% endif %}
+                    <a href="{% url "about" lang %}">
                         <li>
                             <span>
                                 {% if lang == "RU" %}

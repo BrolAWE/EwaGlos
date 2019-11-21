@@ -16,8 +16,10 @@
                 <img class="logo_svg"  src="{% static 'img/glossary.svg'%}" alt="" height="30" width="30">
             </a>
                 <div class="search">
-                    <input type="search" > <img src="{% static 'img/search.svg' %}" alt="" height="23" width="24">
-                </div>
+                <form action="{% url 'search' lang %}" method="get" >
+                    <input name="q" type="text" style="height: 12px">
+                </form>
+            </div>
                 <div class="select_lan">
                     {% if word_translation.language != "EN" %}
                     <a href="{% url "word" "EN" word.pk word_translation.language %}">

@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import render
 
@@ -76,6 +77,17 @@ def word(request, lang, pk, lan):
         'word_translations': word_translations,
         'close_sense_words': close_sense_words,
         'close_sense_translations': close_sense_translations
+    })
+
+
+def search(request, lang):
+    query = request.GET.get("q")
+    words = WordTranslation.objects.filter(
+        Q(name__icontains=query)
+    )
+    return render(request, 'search.html', context={
+        'words': words,
+        'lang': lang,
     })
 
 

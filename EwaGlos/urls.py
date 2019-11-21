@@ -27,6 +27,7 @@ urlpatterns = [
     path('subsections/<str:lang>/<int:pk>', views.subsections, name="subsections"),
     path('words/<str:lang>/<int:pk>', views.words, name="words"),
     path('word/<str:lang>/<int:pk>/<str:lan>', views.word, name="word"),
+    path('search/<str:lang>', views.search, name='search'),
     path('api/sections', views.SectionsView.as_view(), name="sections_api"),
     path('api/subsections/<int:pk>', views.SubsectionsView.as_view(), name="subsections_api"),
     path('api/words/<int:pk>', views.WordsView.as_view(), name="words_api"),

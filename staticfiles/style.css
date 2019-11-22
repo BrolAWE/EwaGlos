@@ -33,13 +33,17 @@ main {
 	margin-right: 10px;
 }
 .search {
-	width: 225px;
+	width: 200px;
 	float: right;
 	margin-top: 5px;
-	margin-right: 60px;
+	margin-right: 85px;
+	position: relative;
 }
 .search img {
-	float: right;
+	position: absolute;
+	right: 180px;
+	top: 3px;
+	margin: 0;
 }
 .logo_svg {
 	margin-top: 3px;
@@ -175,40 +179,6 @@ span {
 }
 .list-word-language ul li a {
 	color: #000000;
-}
-.list-word-language ul li:after {
-	content: ''; /* Выводим элемент */
-    position: absolute; /* Абсолютное позиционирование */
-    right: -10px; top: 0; /* Положение элемента */
-    width: 10px; /* Ширина градиента*/
-    height: 100%; /* Высота родителя */
-	background: -moz-linear-gradient(left, rgba(255,255,255, 0.2), #fff 100%);
-    background: -webkit-linear-gradient(left, rgba(255,255,255, 0.2), #fff 100%);
-    background: -o-linear-gradient(left, rgba(255,255,255, 0.2), #fff 100%);
-    background: -ms-linear-gradient(left, rgba(255,255,255, 0.2), #fff 100%);
-    background: linear-gradient(to right, rgba(255,255,255, 0.2), #fff 100%);
-	/*
-
-
-
-
-
-
-
-
-
-	пиздец потом доделаю
-
-
-
-
-
-
-
-
-
-
-	*/
 }
 .list-word-language ul li:hover {
     white-space: normal; /* Обычный перенос текста */

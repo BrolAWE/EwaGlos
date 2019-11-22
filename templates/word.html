@@ -69,11 +69,11 @@
         </div>
 		</header>
 		<main>
-            {% if word.image.url != None %}
+            {% if wordtrans.image.url != None %}
             <div class="image">
 				<img src="{{ word.image.url }}" alt="" width="750" height="450">
 				<span>
-                    {{ word.image_description }}
+                    {{ wordtrans.image_description }}
                 </span>
 			</div>
             {% endif %}
@@ -82,7 +82,7 @@
 					<div class="header-name">
 						<div class="name">
 							<h3>
-                                {{ word.name }}
+                                {{ wordtrans.name }}
                             </h3>
 						</div>
 						<div class="name-language">

@@ -82,9 +82,7 @@ def word(request, lang, pk, lan):
 
 def search(request, lang):
     query = request.GET.get("q")
-    words = WordTranslation.objects.filter(
-        Q(name__icontains=query)
-    )
+    words = WordTranslation.objects.filter(Q(name__icontains=query)).filter(Q(language=lang))
     return render(request, 'search.html', context={
         'words': words,
         'lang': lang,

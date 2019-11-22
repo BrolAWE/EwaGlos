@@ -19,9 +19,9 @@ LANG = (
 
 
 class Section(models.Model):
-    name = models.CharField(max_length=100, help_text="Пример зполнения: <em>Искусства и ремёсла</em>.",
+    name = models.CharField(max_length=100, help_text="Пример заполнения: <em>Искусства и ремёсла</em>.",
                             verbose_name="Название раздела")
-    color = models.CharField(max_length=7, help_text="Пример зполнения: <em>#00FF00</em>.", verbose_name="Цвет")
+    color = models.CharField(max_length=7, help_text="Пример заполнения: <em>#00FF00</em>.", verbose_name="Цвет")
 
     def __str__(self):
         return "{0}, {1}".format(self.pk, self.name)
@@ -34,9 +34,9 @@ class Section(models.Model):
 class Subsection(models.Model):
     section = models.ForeignKey(Section, on_delete=models.CASCADE, db_column="section",
                                 verbose_name="Выбрать/добавить раздел")
-    name = models.CharField(max_length=100, help_text="Пример зполнения: <em>Строительство</em>.",
+    name = models.CharField(max_length=100, help_text="Пример заполнения: <em>Строительство</em>.",
                             verbose_name="Название подраздела")
-    color = models.CharField(max_length=7, help_text="Пример зполнения: <em>#00FF00</em>. "
+    color = models.CharField(max_length=7, help_text="Пример заполнения: <em>#00FF00</em>. "
                                                      "Для большей информации используйте таблицу цветов HTML",
                              verbose_name="Цвет")
 

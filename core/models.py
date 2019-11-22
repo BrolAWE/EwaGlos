@@ -107,6 +107,10 @@ class CloseSenseWord(models.Model):
                                     help_text="Choose from the list the close sense word", related_name="close_sense",
                                     verbose_name="Близкое по смыслу слово")
 
+    def __str__(self):
+        return "{0}, {1}".format(self.word, self.close_sense)
+
+
     class Meta:
         verbose_name = "Близкое по смыслу слово"
         verbose_name_plural = "Близкие по смыслу слова"

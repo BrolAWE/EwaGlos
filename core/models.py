@@ -46,7 +46,7 @@ class Subsection(models.Model):
 class Word(models.Model):
     subsection = models.ForeignKey(Subsection, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, help_text="Use the following format: <em>Word</em>.")
-    image = cloudinary.models.CloudinaryField('картинка')
+    image = cloudinary.models.CloudinaryField('image')
 
     def __str__(self):
         return "{0}, {1}".format(self.pk, self.name)

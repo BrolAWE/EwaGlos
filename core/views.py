@@ -41,7 +41,8 @@ def subsections(request, lang, pk):
 
 
 def words(request, lang, pk):
-    section = SectionTranslation.objects.get(section=pk, language=lang)
+    subsection = Subsection.objects.get(pk=pk)
+    section = SectionTranslation.objects.get(section=subsection.section, language=lang)
     word = Word.objects.filter(subsection=pk)
     words = WordTranslation.objects.filter(word__in=word.values_list("pk"), language=lang)
     return render(request, 'words.html', context={

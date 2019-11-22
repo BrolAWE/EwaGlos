@@ -46,10 +46,11 @@ def words(request, lang, pk):
     word = Word.objects.filter(subsection=pk)
     words = WordTranslation.objects.filter(word__in=word.values_list("pk"), language=lang)
     return render(request, 'words.html', context={
-        'pk': pk,
+        'subsection': subsection,
         'words': words,
         'section': section,
         'lang': lang,
+        'pk': pk,
     })
 
 

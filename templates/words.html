@@ -40,7 +40,7 @@
                     </li>
                 </a>
                 <img src="{% static 'img/arrow.svg'%}" alt="" height="22" width="22" style="margin: 4px">
-                <a href="{% url "subsections" lang pk %}">
+                <a href="{% url "subsections" lang subsection.section.pk %}">
                     <li>
                         {{ section.name }}
                     </li>

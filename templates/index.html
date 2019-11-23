@@ -13,11 +13,10 @@
 		<div class="logo">
             <a href="{% url "index_translate" lang %}">
                 <img class="logo_svg" src="{% static 'img/glossary1.svg' %}" alt="" height="30" width="30">
-              <!--  <img class="logo_svg" src="{% static 'img/glossary.gif' %}" alt="" height="30" width="30">
                 <img class="logo_svg" src="{% static 'img/glossary.gif' %}" alt="" height="30" width="30">
                 <img class="logo_svg" src="{% static 'img/glossary.gif' %}" alt="" height="30" width="30">
                 <img class="logo_svg" src="{% static 'img/glossary.gif' %}" alt="" height="30" width="30">
-                <img class="logo_svg" src="{% static 'img/glossary.gif' %}" alt="" height="30" width="30"> -->
+
             </a>
             <div class="search">
                 <form action="{% url 'search' lang %}" method="get" >
@@ -33,7 +32,7 @@
         </div>
 		<div class="section">
 			<ul>
-                    <a href="{% url "sections" lang %}">
+                    <a href="{% url "sections" lang %}" style="background-image: url({% static 'img/XwIB.gif'%}); background-size: cover;">
                         <li>
                             <span>
                                 {% if lang == "RU" %}
@@ -44,7 +43,7 @@
                             </span>
                         </li>
                     </a>
-                    <a href="{% url "about" lang %}">
+                    <a href="{% url "about" lang %}" style="background-image: url({% static 'img/iGK.gif'%}); background-size: cover;">
                         <li>
                             <span>
                                 {% if lang == "RU" %}

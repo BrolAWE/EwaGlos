@@ -34,5 +34,6 @@ urlpatterns = [
     path('api/word/<str:pk>/<str:lan>', views.WordView.as_view(), name="api_word"),
 ]
 admin.site.site_header = "Дроблин"
-admin.site.site_title = "Дроблин"
-admin.site.index_title = "Сайт для дроблинов"
+admin.site.site_title = "Admin"
+admin.site.index_title = "EwaGlos"
+

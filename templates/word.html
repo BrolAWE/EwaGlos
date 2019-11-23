@@ -96,7 +96,7 @@
             {% endif %}
 			<div class="words">
 				<div class="ru-word">
-					<div class="header-name">
+					<div class="header-name" style="background-color: {{ subsection.subsection.color }}">
 						<div class="name">
 							<h3>
                                 {{ wordtrans.name }}
@@ -142,7 +142,7 @@
 				</div>
 
 				<div class="ne-ru-word">
-					<div class="header-name">
+					<div class="header-name" style="background-color: {{ subsection.subsection.color }}">
 						<div class="name">
 							<h3>
                                 {{ word_translation.name }}
@@ -228,12 +228,12 @@
 
 				</div>
 				<div class="language">
-					<div class="header-name"></div>
+					<div class="header-name" style="background-color: {{ subsection.subsection.color }}"></div>
 					<div class="list-language">
 						<ul>
                             {% for wordtranslation in word_translations %}
                                 <li>
-                                    <a href="{% url "word" wordtrans.language word.pk wordtranslation.language %}">
+                                    <a href="{% url "word" wordtrans.language word.pk wordtranslation.language %}" style="background-color: {{ section.section.color }}">
                                         {{ wordtranslation.language }}
                                     </a>
                                 </li>

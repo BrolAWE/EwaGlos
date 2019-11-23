@@ -1,6 +1,8 @@
 from django.contrib import admin
 
 # Register your models here.
+from django.forms import TextInput, Textarea
+
 from core.models import *
 
 
@@ -33,12 +35,18 @@ class SubsectionAdmin(admin.ModelAdmin):
 class WordTranslationInline(admin.TabularInline):
     model = WordTranslation
     raw_id_fields = ("word",)
+    formfield_overrides = {
+        models.CharField: {'widget': TextInput(attrs={'size': '13'})},
+        models.TextField: {'widget': Textarea(attrs={'rows': 12, 'cols': 37})},
+    }
 
 
 class CloseSenseWordInline(admin.TabularInline):
     model = CloseSenseWord
     raw_id_fields = ("word",)
     fk_name = "word"
+
+
 
 
 @admin.register(Word)

@@ -117,3 +117,16 @@ class CloseSenseWord(models.Model):
     class Meta:
         verbose_name = "Близкое по смыслу слово"
         verbose_name_plural = "Близкие по смыслу слова"
+
+
+class Synonym(models.Model):
+    word = models.ForeignKey(WordTranslation, on_delete=models.CASCADE, help_text="Choose from the list the word",
+                             verbose_name="Исходное слово")
+    synonym = models.CharField(max_length=100, verbose_name="Синоним")
+
+    def __str__(self):
+        return "{0}".format(self.word)
+
+    class Meta:
+        verbose_name = "Синоним"
+        verbose_name_plural = "Синонимы"

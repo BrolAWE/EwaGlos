@@ -14,7 +14,8 @@ LANG = (
     ('IT', 'Italian'),
     ('RO', 'Romanian'),
     ('RU', 'Russian'),
-    ('TR', 'Turkish')
+    ('TR', 'Turkish'),
+    ('PL', 'Polish'),
 )
 
 

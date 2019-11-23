@@ -11,7 +11,7 @@ class SectionTranslationInline(admin.TabularInline):
 
 @admin.register(Section)
 class SectionAdmin(admin.ModelAdmin):
-    list_display = ("id", "name",)
+    list_display = ("code",)
     inlines = [
         SectionTranslationInline,
     ]
@@ -24,7 +24,7 @@ class SubsectionTranslationInline(admin.TabularInline):
 
 @admin.register(Subsection)
 class SubsectionAdmin(admin.ModelAdmin):
-    list_display = ("id", "name",)
+    list_display = ("code",)
     inlines = [
         SubsectionTranslationInline,
     ]
@@ -43,7 +43,7 @@ class CloseSenseWordInline(admin.TabularInline):
 
 @admin.register(Word)
 class WordAdmin(admin.ModelAdmin):
-    list_display = ("id", "name",)
+    list_display = ("code",)
     inlines = [
         WordTranslationInline,
         CloseSenseWordInline,

@@ -56,3 +56,8 @@ class WordAdmin(admin.ModelAdmin):
         WordTranslationInline,
         CloseSenseWordInline,
     ]
+
+
+@admin.register(Synonym)
+class WordAdmin(admin.ModelAdmin):
+    list_display = ("word", "synonym")

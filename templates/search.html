@@ -37,9 +37,13 @@
         <div class="section">
 			<ul>
                 {% for word in words %}
-                    {% if lang == "RU" %}
+                    {% if lang == "RU" and word.language != "RU" %}
+                    <a href="{% url "word" lang word.word.pk word.language %}" style="background-image: url({{ word.word.image.url }}); background-size: cover;">
+                    {% elif lang == "RU" and word.language == "RU" %}
                     <a href="{% url "word" lang word.word.pk "EN" %}" style="background-image: url({{ word.word.image.url }}); background-size: cover;">
-                    {% elif lang == "EN" %}
+                    {% elif lang == "EN" and word.language != "EN" %}
+                    <a href="{% url "word" lang word.word.pk word.language %}" style="background-image: url({{ word.word.image.url }}); background-size: cover;">
+                    {% elif lang == "EN" and word.language == "EN" %}
                     <a href="{% url "word" lang word.word.pk "RU" %}" style="background-image: url({{ word.word.image.url }}); background-size: cover;">
                     {% endif %}
                         <li>

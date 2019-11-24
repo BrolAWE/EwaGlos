@@ -7,7 +7,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from core.models import *
-from core.serializers import SectionsSerializer, SubsectionsSerializer, WordsSerializer, WordSerializer
+from core.serializers import WordsSerializer, WordSerializer, \
+    SectionSerializer, SubsectionSerializer
 
 
 def index(request, lang="RU"):
@@ -92,18 +93,17 @@ def search(request, lang):
     })
 
 
-class SectionsView(APIView):
+class SectionView(APIView):
     def get(self, request):
         sections = Section.objects.all()
-        serializer = SectionsSerializer(sections, many="True")
+        serializer = SectionSerializer(sections, many="True")
         return Response({"sections": serializer.data})
 
 
-class SubsectionsView(APIView):
-    def get(self, *args, **kwargs):
-        pk = kwargs.get('pk')
-        subsections = Subsection.objects.filter(section=pk)
-        serializer = SubsectionsSerializer(subsections, many="True")
+class SubsectionView(APIView):
+    def get(self, request):
+        subsections = Subsection.objects.all()
+        serializer = SubsectionSerializer(subsections, many="True")
         return Response({"subsections": serializer.data})
 
 

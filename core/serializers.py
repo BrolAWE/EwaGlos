@@ -7,10 +7,12 @@ class SectionSerializer(serializers.Serializer):
 
 
 class SubsectionSerializer(serializers.Serializer):
+    section = serializers.CharField(max_length=100)
     code = serializers.CharField(max_length=100)
     color = serializers.CharField(max_length=7)
 
 
 class WordSerializer(serializers.Serializer):
+    subsection = serializers.CharField(max_length=100)
     code = serializers.CharField(max_length=100)
     image = serializers.CharField(max_length=100)

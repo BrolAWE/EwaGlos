@@ -1,9 +1,20 @@
 from rest_framework import serializers
 
+from core.models import Section, WordTranslation, SectionTranslation
 
-class SectionSerializer(serializers.Serializer):
-    code = serializers.CharField(max_length=100)
-    color = serializers.CharField(max_length=7)
+
+class SectionTranslationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SectionTranslation
+        fields = ['language', 'name']
+
+
+class SectionSerializer(serializers.ModelSerializer):
+    translations = SectionTranslationSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Section
+        fields = ['code', 'color', 'translations']
 
 
 class SubsectionSerializer(serializers.Serializer):

@@ -78,17 +78,23 @@ class WordTranslation(models.Model):
         return "{0}, {1}".format(self.pk, self.name)
 
     class Meta:
+        unique_together = ['word', 'language']
         verbose_name = "Перевод слова"
         verbose_name_plural = "Переводы слов"
 
 
 class SectionTranslation(models.Model):
-    section = models.ForeignKey(Section, on_delete=models.CASCADE, verbose_name="Выбрать/добавить раздел")
+    section = models.ForeignKey(Section, on_delete=models.CASCADE, related_name='translations',
+                                verbose_name="Выбрать/добавить раздел")
     language = models.CharField(max_length=2, choices=LANG, verbose_name="Выбрать язык")
     name = models.CharField(max_length=100, help_text="Напишите перевод раздела на выбранном языке",
                             verbose_name="Перевод")
 
+    def __str__(self):
+        return "{0}, {1}".format(self.language, self.name)
+
     class Meta:
+        unique_together = ['section', 'language']
         verbose_name = "Перевод раздела"
         verbose_name_plural = "Переводы разделов"
 
@@ -100,6 +106,7 @@ class SubsectionTranslation(models.Model):
                             verbose_name="Перевод")
 
     class Meta:
+        unique_together = ['subsection', 'language']
         verbose_name = "Перевод подраздела"
         verbose_name_plural = "Переводы подразделов"
 

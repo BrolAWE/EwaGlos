@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from core.models import *
-from core.serializers import WordsSerializer, WordSerializer, \
+from core.serializers import WordSerializer, \
     SectionSerializer, SubsectionSerializer
 
 
@@ -107,17 +107,8 @@ class SubsectionView(APIView):
         return Response({"subsections": serializer.data})
 
 
-class WordsView(APIView):
-    def get(self, *args, **kwargs):
-        pk = kwargs.get('pk')
-        words = Word.objects.filter(subsection=pk)
-        serializer = WordsSerializer(words, many="True")
-        return Response({"words": serializer.data})
-
-
 class WordView(APIView):
-    def get(self, *args, **kwargs):
-        pk = kwargs.get('pk')
-        word = Word.objects.get(pk=pk)
-        serializer = WordSerializer(word)
-        return Response({"word": serializer.data})
+    def get(self, request):
+        words = Word.objects.all()
+        serializer = WordSerializer(words, many="True")
+        return Response({"words": serializer.data})

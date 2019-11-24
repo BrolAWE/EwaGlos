@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from core.models import Section, WordTranslation, SectionTranslation
+from core.models import Section, WordTranslation, SectionTranslation, Subsection, Synonym, CloseSenseWord, Word
 
 
 class SectionTranslationSerializer(serializers.ModelSerializer):
@@ -17,13 +17,44 @@ class SectionSerializer(serializers.ModelSerializer):
         fields = ['code', 'color', 'translations']
 
 
-class SubsectionSerializer(serializers.Serializer):
-    section = serializers.CharField(max_length=100)
-    code = serializers.CharField(max_length=100)
-    color = serializers.CharField(max_length=7)
+class SubsectionTranslationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SectionTranslation
+        fields = ['language', 'name']
 
 
-class WordSerializer(serializers.Serializer):
-    subsection = serializers.CharField(max_length=100)
-    code = serializers.CharField(max_length=100)
-    image = serializers.CharField(max_length=100)
+class SubsectionSerializer(serializers.ModelSerializer):
+    translations = SubsectionTranslationSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Subsection
+        fields = ['code', 'color', 'translations']
+
+
+class SynonymSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Synonym
+        fields = ['synonym']
+
+
+class WordTranslationSerializer(serializers.ModelSerializer):
+    synonyms = SynonymSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = WordTranslation
+        fields = ['language', 'name', 'definition', 'comment', 'image_description', 'synonyms']
+
+
+class CloseSenseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CloseSenseWord
+        fields = ['close_sense']
+
+
+class WordSerializer(serializers.ModelSerializer):
+    translations = WordTranslationSerializer(many=True, read_only=True)
+    close_senses = CloseSenseSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Word
+        fields = ['code', 'image', 'translations', 'close_senses']

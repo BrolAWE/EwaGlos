@@ -47,8 +47,6 @@ class CloseSenseWordInline(admin.TabularInline):
     fk_name = "word"
 
 
-
-
 @admin.register(Word)
 class WordAdmin(admin.ModelAdmin):
     list_display = ("code",)

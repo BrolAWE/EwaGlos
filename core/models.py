@@ -64,7 +64,8 @@ class Word(models.Model):
 
 
 class WordTranslation(models.Model):
-    word = models.ForeignKey(Word, on_delete=models.CASCADE, verbose_name="Выбрать/добавить слово")
+    word = models.ForeignKey(Word, on_delete=models.CASCADE, related_name='translations',
+                             verbose_name="Выбрать/добавить слово")
     language = models.CharField(max_length=2, choices=LANG, verbose_name="Выбрать язык")
     name = models.CharField(max_length=100, help_text="Напишите перевод слова на выбранном языке",
                             verbose_name="Перевод")
@@ -100,10 +101,14 @@ class SectionTranslation(models.Model):
 
 
 class SubsectionTranslation(models.Model):
-    subsection = models.ForeignKey(Subsection, on_delete=models.CASCADE, verbose_name="Выбрать/добавить подраздел")
+    subsection = models.ForeignKey(Subsection, on_delete=models.CASCADE, related_name='translations',
+                                   verbose_name="Выбрать/добавить подраздел")
     language = models.CharField(max_length=2, choices=LANG, verbose_name="Выбрать язык")
     name = models.CharField(max_length=100, help_text="Напишите перевод подраздела на выбранном языке",
                             verbose_name="Перевод")
+
+    def __str__(self):
+        return "{0}, {1}".format(self.language, self.name)
 
     class Meta:
         unique_together = ['subsection', 'language']
@@ -113,9 +118,9 @@ class SubsectionTranslation(models.Model):
 
 class CloseSenseWord(models.Model):
     word = models.ForeignKey(Word, on_delete=models.CASCADE, help_text="Choose from the list the word",
-                             related_name="word", verbose_name="Исходное слово")
+                             related_name="close_senses", verbose_name="Исходное слово")
     close_sense = models.ForeignKey(Word, on_delete=models.CASCADE,
-                                    help_text="Choose from the list the close sense word", related_name="close_sense",
+                                    help_text="Choose from the list the close sense word", related_name="word",
                                     verbose_name="Близкое по смыслу слово")
 
     def __str__(self):
@@ -128,11 +133,12 @@ class CloseSenseWord(models.Model):
 
 class Synonym(models.Model):
     word = models.ForeignKey(WordTranslation, on_delete=models.CASCADE, help_text="Choose from the list the word",
+                             related_name='synonyms',
                              verbose_name="Исходное слово")
     synonym = models.CharField(max_length=100, verbose_name="Синоним")
 
     def __str__(self):
-        return "{0}".format(self.word)
+        return "{0}".format(self.synonym)
 
     class Meta:
         verbose_name = "Синоним"

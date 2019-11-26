@@ -29,7 +29,7 @@ urlpatterns = [
     path('word/<str:lang>/<str:pk>/<str:lan>', views.word, name="word"),
     path('search/<str:lang>', views.search, name='search'),
     path('api/section', views.SectionView.as_view(), name="sections_api"),
-    path('api/subsection/', views.SubsectionView.as_view(), name="subsections_api"),
+    path('api/subsection/<str:pk>', views.SubsectionView.as_view(), name="subsections_api"),
     path('api/word/', views.WordView.as_view(), name="words_api"),
 ]
 admin.site.site_header = "Дроблин"

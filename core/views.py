@@ -101,14 +101,16 @@ class SectionView(APIView):
 
 
 class SubsectionView(APIView):
-    def get(self, request):
-        subsections = Subsection.objects.all()
+    def get(self, *args, **kwargs):
+        pk = kwargs.get('pk')
+        subsections = Subsection.objects.filter(section=pk)
         serializer = SubsectionSerializer(subsections, many="True")
         return Response({"subsections": serializer.data})
 
 
 class WordView(APIView):
-    def get(self, request):
-        words = Word.objects.all()
+    def get(self, *args, **kwargs):
+        pk = kwargs.get('pk')
+        words = Word.objects.objects.filter(subsection=pk)
         serializer = WordSerializer(words, many="True")
         return Response({"words": serializer.data})

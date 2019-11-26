@@ -111,6 +111,6 @@ class SubsectionView(APIView):
 class WordView(APIView):
     def get(self, *args, **kwargs):
         pk = kwargs.get('pk')
-        words = Word.objects.objects.filter(subsection=pk)
+        words = Word.objects.filter(subsection=pk)
         serializer = WordSerializer(words, many="True")
         return Response({"words": serializer.data})

@@ -30,7 +30,8 @@ urlpatterns = [
     path('search/<str:lang>', views.search, name='search'),
     path('api/section', views.SectionView.as_view(), name="sections_api"),
     path('api/subsection/<str:pk>', views.SubsectionView.as_view(), name="subsections_api"),
-    path('api/word/<str:pk>', views.WordView.as_view(), name="words_api"),
+    path('api/words/<str:pk>', views.WordsView.as_view(), name="words_api"),
+    path('api/word/<str:pk>', views.WordView.as_view(), name="word_api"),
 ]
 admin.site.site_header = "Дроблин"
 admin.site.site_title = "Admin"

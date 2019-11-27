@@ -108,9 +108,17 @@ class SubsectionView(APIView):
         return Response({"subsections": serializer.data})
 
 
-class WordView(APIView):
+class WordsView(APIView):
     def get(self, *args, **kwargs):
         pk = kwargs.get('pk')
         words = Word.objects.filter(subsection=pk)
         serializer = WordSerializer(words, many="True")
         return Response({"words": serializer.data})
+
+
+class WordView(APIView):
+    def get(self, *args, **kwargs):
+        pk = kwargs.get('pk')
+        word = Word.objects.get(code=pk)
+        serializer = WordSerializer(word)
+        return Response({"word": serializer.data})

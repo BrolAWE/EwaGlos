@@ -121,4 +121,4 @@ class WordView(APIView):
         pk = kwargs.get('pk')
         word = Word.objects.get(code=pk)
         serializer = WordSerializer(word)
-        return Response({"word": serializer.data})
+        return Response(serializer.data)

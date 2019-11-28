@@ -157,7 +157,7 @@
         </div>
     </div>
     <div class="tiles">
-        <div class="tile">
+        <div class="tile" onclick="location.href='{% url "sections" lang %}';">
             <div class="category">
                 <h2 class="category-title">
                     {% if lang == "RU" %}
@@ -169,7 +169,7 @@
             </div>
             <!--<img src="*.jpg">-->
             <div class="details">
-                <button class="follow-category" href="{% url "sections" lang %}">
+                <button class="follow-category">
                     {% if lang == "RU" %}
                         Перейти
                     {% elif lang == "EN" %}

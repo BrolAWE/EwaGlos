@@ -12,13 +12,13 @@ from core.serializers import WordSerializer, \
 
 
 def index(request, lang="RU"):
-    return render(request, 'index1.html', context={
+    return render(request, 'index.html', context={
         'lang': lang,
     })
 
 
 def about(request, lang):
-    return render(request, 'about1.html', context={
+    return render(request, 'about.html', context={
         'lang': lang,
     })
 

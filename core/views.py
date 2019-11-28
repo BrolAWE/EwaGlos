@@ -18,7 +18,7 @@ def index(request, lang="RU"):
 
 
 def about(request, lang):
-    return render(request, 'about.html', context={
+    return render(request, 'about1.html', context={
         'lang': lang,
     })
 

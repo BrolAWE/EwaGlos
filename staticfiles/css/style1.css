@@ -1,0 +1,481 @@
+@font-face {
+font-family:"Source Sans Pro";
+font-style:normal;
+font-weight:200;
+src:local("Source Sans Pro ExtraLight"),local(SourceSansPro-ExtraLight),url(../fonts/sourcesansproextralight.woff2) format("woff2"),url(../fonts/sourcesansproextralight.woff) format("woff"),url(../fonts/sourcesansproextralight.ttf) format("truetype")
+}
+
+@font-face {
+font-family:"Source Sans Pro";
+font-style:italic;
+font-weight:200;
+src:local("Source Sans Pro ExtraLight Italic"),local(SourceSansPro-ExtraLightIt),url(../fonts/sourcesansproextralightitalic.woff2) format("woff2"),url(../fonts/sourcesansproextralightitalic.woff) format("woff"),url(../fonts/sourcesansproextralightitalic.ttf) format("truetype")
+}
+
+@font-face {
+font-family:"Source Sans Pro";
+font-style:normal;
+font-weight:300;
+src:local("Source Sans Pro Light"),local(SourceSansPro-Light),url(../fonts/sourcesansprolight.woff2) format("woff2"),url(../fonts/sourcesansprolight.woff) format("woff"),url(../fonts/sourcesansprolight.ttf) format("truetype")
+}
+
+@font-face {
+font-family:"Source Sans Pro";
+font-style:italic;
+font-weight:300;
+src:local("Source Sans Pro Light Italic"),local(SourceSansPro-LightIt),url(../fonts/sourcesansprolightitalic.woff2) format("woff2"),url(../fonts/sourcesansprolightitalic.woff) format("woff"),url(../fonts/sourcesansprolightitalic.ttf) format("truetype")
+}
+
+@font-face {
+font-family:"Source Sans Pro";
+font-style:normal;
+font-weight:400;
+src:local("Source Sans Pro"),local(SourceSansPro-Regular),url(../fonts/sourcesanspro.woff2) format("woff2"),url(../fonts/sourcesanspro.woff) format("woff"),url(../fonts/sourcesanspro.ttf) format("truetype")
+}
+
+@font-face {
+font-family:"Source Sans Pro";
+font-style:italic;
+font-weight:400;
+src:local("Source Sans Pro Italic"),local(SourceSansPro-It),url(../fonts/sourcesansproitalic.woff2) format("woff2"),url(../fonts/sourcesansproitalic.woff) format("woff"),url(../fonts/sourcesansproitalic.ttf) format("truetype")
+}
+
+@font-face {
+font-family:"Source Sans Pro";
+font-style:normal;
+font-weight:600;
+src:local("Source Sans Pro Semibold"),local(SourceSansPro-Semibold),url(../fonts/sourcesansprosemibold.woff2) format("woff2"),url(../fonts/sourcesansprosemibold.woff) format("woff"),url(../fonts/sourcesansprosemibold.ttf) format("truetype")
+}
+
+@font-face {
+font-family:"Source Sans Pro";
+font-style:italic;
+font-weight:600;
+src:local("Source Sans Pro Semibold Italic"),local(SourceSansPro-SemiboldIt),url(../fonts/sourcesansprosemibolditalic.woff2) format("woff2"),url(../fonts/sourcesansprosemibolditalic.woff) format("woff"),url(../fonts/sourcesansprosemibolditalic.ttf) format("truetype")
+}
+
+@font-face {
+font-family:"Source Sans Pro";
+font-style:normal;
+font-weight:700;
+src:local("Source Sans Pro Bold"),local(SourceSansPro-Bold),url(../fonts/sourcesansprobold.woff2) format("woff2"),url(../fonts/sourcesansprobold.woff) format("woff"),url(../fonts/sourcesansprobold.ttf) format("truetype")
+}
+
+@font-face {
+font-family:"Source Sans Pro";
+font-style:italic;
+font-weight:700;
+src:local("Source Sans Pro Bold Italic"),local(SourceSansPro-BoldIt),url(../fonts/sourcesansprobolditalic.woff2) format("woff2"),url(../fonts/sourcesansprobolditalic.woff) format("woff"),url(../fonts/sourcesansprobolditalic.ttf) format("truetype")
+}
+
+@font-face {
+font-family:"Source Sans Pro";
+font-style:normal;
+font-weight:900;
+src:local("Source Sans Pro Black"),local(SourceSansPro-Black),url(../fonts/sourcesansproblack.woff2) format("woff2"),url(../fonts/sourcesansproblack.woff) format("woff"),url(../fonts/sourcesansproblack.ttf) format("truetype")
+}
+
+@font-face {
+font-family:"Source Sans Pro";
+font-style:italic;
+font-weight:900;
+src:local("Source Sans Pro Black Italic"),local(SourceSansPro-BlackIt),url(../fonts/sourcesansproblackitalic.woff2) format("woff2"),url(../fonts/sourcesansproblackitalic.woff) format("woff"),url(../fonts/sourcesansproblackitalic.ttf) format("truetype")
+}
+
+*,:before,:after {
+box-sizing:border-box;
+list-style-type:none;
+margin:0;
+outline:0;
+padding:0;
+text-decoration:none
+}
+
+::selection {
+background:#00f;
+color:#fff
+}
+
+body {
+color:#000;
+font-family:"Source Sans Pro",sans-serif;
+font-size:100%;
+font-weight:400
+}
+
+.dictionary-header {
+align-items:center;
+border-bottom:1px solid #f5f7fa;
+display:flex;
+justify-content:space-between;
+margin:0 auto;
+padding:16px 0;
+vertical-align:center;
+max-width:1024px
+}
+
+.dictionary-header .search-panel {
+float:left;
+text-align:left;
+width:calc(100% / 3)
+}
+
+.dictionary-header .logotype {
+float:center;
+text-align:center;
+width:calc(100% / 3)
+}
+
+.dictionary-header .dropdown-panel {
+float:right;
+text-align:right;
+width:calc(100% / 3)
+}
+
+.dictionary-footer {
+align-items:center;
+border-top:1px solid #f5f7fa;
+display:flex;
+justify-content:space-between;
+margin:0 auto;
+padding:16px 0;
+vertical-align:center;
+width:1024px
+}
+
+.dictionary-footer a {
+color:blue;
+font-family:"Source Sans Pro",sans-serif;
+font-size:100%;
+font-weight:400;
+margin-left:16px
+}
+
+.dictionary-footer a:first-child {
+margin-left:0
+}
+
+.dictionary-footer a:hover {
+cursor:pointer;
+text-decoration:underline
+}
+
+.bold {
+display:inline;
+font-weight:600
+}
+
+.dictionary-page {
+display:flex;
+justify-content:space-between;
+margin:0 auto;
+margin:16px auto;
+max-width:1024px
+}
+
+.column {
+border:1px solid #f5f7fa;
+border-radius:16px;
+box-shadow:0 2px 2px 0 rgba(0,0,0,0);
+padding:16px;
+transition:all ease 300ms
+}
+
+.column:hover {
+box-shadow:0 12px 16px 0 rgba(0,0,0,.1625)
+}
+
+.column-header {
+color:blue;
+display:flex;
+justify-content:space-between;
+vertical-align:center
+}
+
+.column-header p {
+align-items:center;
+color:#000;
+display:flex;
+font-family:"Source Sans Pro",sans-serif;
+font-size:137.5%;
+font-weight:400;
+justify-content:center;
+vertical-align:center
+}
+
+.column-header p.bold {
+align-items:center;
+background:#fafbfd;
+border-radius:5em;
+color:blue;
+display:flex;
+font-family:"Source Sans Pro",sans-serif;
+font-size:87.5%;
+font-weight:300;
+height:32px;
+justify-content:center;
+line-height:32px;
+text-align:center;
+vertical-align:center;
+width:32px
+}
+
+.column-lang-ru {
+float:left;
+width:calc((1024px / 3) - 32px)
+}
+
+.column-lang-other {
+float:left;
+margin:0 32px;
+width:calc(1024px / 3)
+}
+
+.column-lang-all {
+float:left;
+position:relative;
+width:calc((1024px / 3) - 32px)
+}
+
+.definition {
+margin-top:16px
+}
+
+.comment {
+margin-top:16px
+}
+
+.similar-words {
+margin-top:16px
+}
+
+.similar-words a {
+color:#000;
+font-size:100%;
+font-weight:600
+}
+
+.similar-words a::after {
+color:#000;
+content:", ";
+font-size:100%;
+font-weight:600
+}
+
+.similar-words a:last-child::after {
+content:none
+}
+
+.similar-words-list {
+background:#fafbfd;
+border-radius:16px;
+color:blue;
+margin-top:16px;
+padding:16px
+}
+
+.divide {
+display:flex;
+justify-content:space-between;
+padding-top:16px
+}
+
+.list-word-language {
+    width:100%
+}
+
+.list-word-language li {
+margin-bottom:8px;
+align-items:center;
+display:flex;
+justify-content:space-between;
+vertical-align:center
+}
+
+.list-word-language li:last-child {
+margin-bottom:0
+}
+
+.list-word-language li p {
+color:#000;
+display:block;
+float:right;
+right: 0;
+font-size:100%;
+font-weight:600;
+line-height:32px;
+max-width: calc((1024px / 3) - 96px);
+text-align:right
+}
+
+.list-word-language li p {
+    white-space: nowrap; /* Запрещаем перенос строк */
+    overflow: hidden; /* Обрезаем все, что не помещается в область */
+    text-overflow: ellipsis;
+}
+
+.list-word-language li a {
+align-items:center;
+color:blue;
+display:flex;
+font-family:"Source Sans Pro",sans-serif;
+font-size:87.5%;
+font-weight:300;
+height:32px;
+justify-content:center;
+line-height:32px;
+text-align:center;
+vertical-align:center;
+
+
+
+
+align-items:center;
+background:#fafbfd;
+border-radius:5em;
+width: 32px
+}
+
+   input[type="search"]::-webkit-input-placeholder { color:#000;
+font-family:"Source Sans Pro",sans-serif;
+font-size:112.5%;
+font-weight:400; }
+   input[type="search"]:-ms-input-placeholder { color:#000;
+font-family:"Source Sans Pro",sans-serif;
+font-size:112.5%;
+font-weight:400; }
+   input[type="search"]::-ms-input-placeholder { color:#000;
+font-family:"Source Sans Pro",sans-serif;
+font-size:112.5%;
+font-weight:400; }
+   input[type="search"]::placeholder { color:#000;
+font-family:"Source Sans Pro",sans-serif;
+font-size:112.5%;
+font-weight:400; } 
+
+.sc-searchbox {
+position:relative
+}
+
+.sc-searchbox-field {
+background:#fafbfd;
+border:0;
+border-radius:16px;
+outline:none;
+padding:10px 15px 10px 35px;
+width:auto;
+
+
+align-items:center;
+display:flex;
+justify-content:center;
+vertical-align:center
+}
+
+.sc-searchbox-placeholder {
+align-items:center;
+color:#000;
+display:flex;
+font-family:"Source Sans Pro",sans-serif;
+font-size:112.5%;
+font-weight:400;
+height:100%;
+justify-content:center;
+left:16px;
+pointer-events:none;
+position:absolute;
+top:0;
+transition:ease-in-out .375s;
+width:auto
+}
+
+/*.sc-searchbox-placeholder-text {
+margin:0;
+transition:ease-in-out .375s
+}
+
+.sc-searchbox-placeholder-icon {
+margin-right:4px
+}*/
+
+/*.sc-searchbox-field:focus ~ .sc-searchbox-placeholder,.sc-searchbox-field:valid ~ .sc-searchbox-placeholder {
+left:0;
+transform:translate3d(0,0px,0px)
+}*/
+
+.sc-searchbox-field:focus ~ .sc-searchbox-placeholder .sc-searchbox-placeholder-text,.sc-searchbox-field:valid ~ .sc-searchbox-placeholder .sc-searchbox-placeholder-text {
+opacity:0
+}
+
+.hierarchy {
+border-bottom:1px solid #f5f7fa;
+margin:0 auto;
+max-width:1024px;
+padding:16px 0
+}
+
+.hierarchy a {
+color:blue;
+font-family:"Source Sans Pro",sans-serif;
+font-size:100%;
+font-weight:400
+}
+
+.hierarchy a:hover {
+cursor:pointer;
+text-decoration:underline
+}
+
+.hierarchy a:after {
+color:#000;
+content:"\f105";
+font-family:FontAwesome;
+margin:0 4px
+}
+
+.hierarchy a:last-child:after {
+content:none;
+font-family:FontAwesome
+}
+
+.type-2 {
+    line-height: 32px
+}
+
+.dictionary-header .dropdown-panel {
+            float: right;
+            text-align: right;
+            width: calc(100% / 3)
+        }
+
+        .dropdown-menu {
+            display: flex;
+            justify-content: flex-end;
+            text-align: center;
+            vertical-align: center
+        }
+
+        .dropdown-menu a.bold {
+            margin-left: 8px
+        }
+
+        .dropdown-menu a.bold:first-child {
+            margin-left: 0
+        }
+
+        a.bold {
+            align-items: center;
+            background: #fafbfd;
+            border-radius: 5em;
+            color: blue;
+            display: flex;
+            font-family: "Source Sans Pro", sans-serif;
+            font-size: 87.5%;
+            font-weight: 300;
+            height: 32px;
+            justify-content: center;
+            line-height: 32px;
+            text-align: center;
+            vertical-align: center;
+            width: 32px
+        }

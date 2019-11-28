@@ -1,0 +1,331 @@
+@font-face {
+font-family:"Source Sans Pro";
+font-style:normal;
+font-weight:200;
+src:local("Source Sans Pro ExtraLight"),local(SourceSansPro-ExtraLight),url(../fonts/sourcesansproextralight.woff2) format("woff2"),url(../fonts/sourcesansproextralight.woff) format("woff"),url(../fonts/sourcesansproextralight.ttf) format("truetype")
+}
+
+@font-face {
+font-family:"Source Sans Pro";
+font-style:italic;
+font-weight:200;
+src:local("Source Sans Pro ExtraLight Italic"),local(SourceSansPro-ExtraLightIt),url(../fonts/sourcesansproextralightitalic.woff2) format("woff2"),url(../fonts/sourcesansproextralightitalic.woff) format("woff"),url(../fonts/sourcesansproextralightitalic.ttf) format("truetype")
+}
+
+@font-face {
+font-family:"Source Sans Pro";
+font-style:normal;
+font-weight:300;
+src:local("Source Sans Pro Light"),local(SourceSansPro-Light),url(../fonts/sourcesansprolight.woff2) format("woff2"),url(../fonts/sourcesansprolight.woff) format("woff"),url(../fonts/sourcesansprolight.ttf) format("truetype")
+}
+
+@font-face {
+font-family:"Source Sans Pro";
+font-style:italic;
+font-weight:300;
+src:local("Source Sans Pro Light Italic"),local(SourceSansPro-LightIt),url(../fonts/sourcesansprolightitalic.woff2) format("woff2"),url(../fonts/sourcesansprolightitalic.woff) format("woff"),url(../fonts/sourcesansprolightitalic.ttf) format("truetype")
+}
+
+@font-face {
+font-family:"Source Sans Pro";
+font-style:normal;
+font-weight:400;
+src:local("Source Sans Pro"),local(SourceSansPro-Regular),url(../fonts/sourcesanspro.woff2) format("woff2"),url(../fonts/sourcesanspro.woff) format("woff"),url(../fonts/sourcesanspro.ttf) format("truetype")
+}
+
+@font-face {
+font-family:"Source Sans Pro";
+font-style:italic;
+font-weight:400;
+src:local("Source Sans Pro Italic"),local(SourceSansPro-It),url(../fonts/sourcesansproitalic.woff2) format("woff2"),url(../fonts/sourcesansproitalic.woff) format("woff"),url(../fonts/sourcesansproitalic.ttf) format("truetype")
+}
+
+@font-face {
+font-family:"Source Sans Pro";
+font-style:normal;
+font-weight:600;
+src:local("Source Sans Pro Semibold"),local(SourceSansPro-Semibold),url(../fonts/sourcesansprosemibold.woff2) format("woff2"),url(../fonts/sourcesansprosemibold.woff) format("woff"),url(../fonts/sourcesansprosemibold.ttf) format("truetype")
+}
+
+@font-face {
+font-family:"Source Sans Pro";
+font-style:italic;
+font-weight:600;
+src:local("Source Sans Pro Semibold Italic"),local(SourceSansPro-SemiboldIt),url(../fonts/sourcesansprosemibolditalic.woff2) format("woff2"),url(../fonts/sourcesansprosemibolditalic.woff) format("woff"),url(../fonts/sourcesansprosemibolditalic.ttf) format("truetype")
+}
+
+@font-face {
+font-family:"Source Sans Pro";
+font-style:normal;
+font-weight:700;
+src:local("Source Sans Pro Bold"),local(SourceSansPro-Bold),url(../fonts/sourcesansprobold.woff2) format("woff2"),url(../fonts/sourcesansprobold.woff) format("woff"),url(../fonts/sourcesansprobold.ttf) format("truetype")
+}
+
+@font-face {
+font-family:"Source Sans Pro";
+font-style:italic;
+font-weight:700;
+src:local("Source Sans Pro Bold Italic"),local(SourceSansPro-BoldIt),url(../fonts/sourcesansprobolditalic.woff2) format("woff2"),url(../fonts/sourcesansprobolditalic.woff) format("woff"),url(../fonts/sourcesansprobolditalic.ttf) format("truetype")
+}
+
+@font-face {
+font-family:"Source Sans Pro";
+font-style:normal;
+font-weight:900;
+src:local("Source Sans Pro Black"),local(SourceSansPro-Black),url(../fonts/sourcesansproblack.woff2) format("woff2"),url(../fonts/sourcesansproblack.woff) format("woff"),url(../fonts/sourcesansproblack.ttf) format("truetype")
+}
+
+@font-face {
+font-family:"Source Sans Pro";
+font-style:italic;
+font-weight:900;
+src:local("Source Sans Pro Black Italic"),local(SourceSansPro-BlackIt),url(../fonts/sourcesansproblackitalic.woff2) format("woff2"),url(../fonts/sourcesansproblackitalic.woff) format("woff"),url(../fonts/sourcesansproblackitalic.ttf) format("truetype")
+}
+
+*, :before, :after {
+	box-sizing: border-box;
+	list-style-type: none;
+	margin: 0;
+	outline: 0;
+	padding: 0;
+	text-decoration: none
+}
+
+::selection {
+	background: #00f;
+	color: #fff
+}
+
+body {
+	align-items: center;
+	background: #fff;
+	color: #000;
+	display: flex;
+	font-family: "Lato", sans-serif;
+	font-size: 100%;
+	font-weight: 400;
+	height: 100vh;
+	justify-content: center;
+	text-align: center;
+	vertical-align: center;
+	width: 100vw
+}
+
+.tiles {
+    border-bottom:1px solid #f5f7fa;
+    border-top:1px solid #f5f7fa;
+	height: 62.5vh;
+	margin: 0 auto;
+	max-width: 87.5vw;
+	width: auto
+}
+
+.tiles .tile {
+	background: #fafbfd;
+	border-radius: 16px;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0);
+	cursor: pointer;
+	display: inline-block;
+	height: calc(62.5vh - 32px);
+	margin: 16px 8px;
+	overflow: hidden;
+	position: relative;
+	text-align: left;
+	width: calc((87.5vw / 4) - 4 * 16px)
+}
+
+.tiles .tile:first-child {
+	background: #8cc152;
+	/*background: linear-gradient(135deg, #a0d468 0%, #8cc152 100%);*/
+}
+
+.tiles .tile:nth-of-type(2) {
+	background: #4a89dc;
+	/*background: linear-gradient(135deg, #5d9cec 0%, #4a89dc 100%);*/
+}
+
+.tiles .tile:nth-of-type(3) {
+	background: #e9573f;
+	/*background: linear-gradient(135deg, #fc6e51 0%, #e9573f 100%);*/
+}
+
+.tiles .tile:last-child {
+	background: #f6bb42;
+	/*background: linear-gradient(135deg, #ffce54 0%, #f6bb42 100%);*/
+}
+
+.tiles .text {
+	background: #ffc0cb;
+	border-radius: 16px;
+	/*box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0);*/
+	cursor: pointer;
+	display: inline-block;
+	height: calc(62.5vh - 32px);
+	margin: 16px 8px;
+	overflow: hidden;
+	position: relative;
+	text-align: left;
+	width: calc((87.5vw / 4) - 4 * 16px)
+}
+
+/*.tiles .tile:hover {
+	box-shadow: 0 12px 16px 0 rgba(0, 0, 0, .1625)
+}*/
+
+.tiles .tile:first-child {
+	margin-left: 0
+}
+
+.tiles .tile:last-child {
+	margin-right: 0
+}
+
+.tiles .tile:before {
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .5) 100%);
+	content: "";
+	height: 100%;
+	left: 0;
+	opacity: 0;
+	position: absolute;
+	top: 100%;
+	transition-duration: .375s;
+	transition-property: top, opacity;
+	width: 100%;
+	z-index: 2
+}
+
+.tiles .tile img {
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	background-position: center;
+	background-size: cover;
+	display: block;
+	height: 100%;
+	max-width: 100%;
+	object-fit: cover;
+	position: relative;
+	vertical-align: middle;
+	width: 100%
+}
+
+.tiles .tile .details {
+	bottom: 0;
+	left: 0;
+	right: 0;
+	position: absolute;
+	z-index: 3;
+	padding: 32px 16px;
+	display: flex;
+	justify-content: center;
+}
+
+.tiles .tile .details button {
+	display: block;
+	opacity: 0;
+	position: relative;
+	top: 32px;
+	transition-delay: 0s;
+	transition-duration: .375s;
+	transition-property: top, opacity;
+	background: transparent;
+	border: 1px solid #fff;
+	border-radius: 16px;
+	color: #fff;
+	display: inline-block;
+	font-family: "Source Sans Pro", sans-serif;
+	font-size: 100%;
+	font-weight: 400;
+	height: 100%;
+	min-width: 128px;
+	position: relative;
+	text-align: left;
+	padding: 8px 16px;
+	transition: all .375s ease;
+	text-align: center;
+	cursor: pointer;
+}
+
+.tiles .tile:focus:before, .tiles .tile:focus button, .tiles .tile:hover:before, .tiles .tile:hover button {
+	opacity: 1
+}
+
+.tiles .tile:focus:before, .tiles .tile:hover:before {
+	top: 0
+}
+
+.tiles .tile:focus button, .tiles .tile:hover button {
+	top: 0
+}
+
+.dictionary-header {
+	align-items: center;
+	display: flex;
+	height: auto;
+	justify-content: space-between;
+	margin: 0 auto;
+	margin-top: 16px;
+	max-width: 87.5vw;
+	vertical-align: center
+}
+
+.dictionary-header .leftside {
+	display: inline;
+	float: left;
+	text-align: left;
+	width: calc(100% / 3)
+}
+
+.dictionary-header .rightside {
+	display: inline;
+	float: right;
+	text-align: right;
+	width: calc(100% / 3)
+}
+
+.dictionary-header .logotype {
+	float: center;
+	text-align: center;
+	width: calc(100% / 3)
+}
+
+.leftside a, .rightside a {
+	color: #4b553a;
+	font-family: "Lato", sans-serif;
+	font-size: 137.5%;
+	font-style: italic;
+	font-weight: 400;
+	margin-right: 16px
+}
+
+.search-panel a:last-child {
+	margin-right: 0;
+}
+
+/* Footer */
+
+.dictionary-footer {
+align-items:center;
+display:flex;
+justify-content:space-between;
+margin:0 auto;
+padding:16px 0;
+vertical-align:center;
+max-width:87.5vw
+}
+
+.dictionary-footer a {
+color:blue;
+font-family:"Source Sans Pro",sans-serif;
+font-size:100%;
+font-weight:400;
+margin-left:16px
+}
+
+.dictionary-footer a:first-child {
+margin-left:0
+}
+
+.dictionary-footer a:hover {
+cursor:pointer;
+text-decoration:underline
+}

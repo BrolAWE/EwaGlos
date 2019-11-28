@@ -12,7 +12,7 @@ from core.serializers import WordSerializer, \
 
 
 def index(request, lang="RU"):
-    return render(request, 'index.html', context={
+    return render(request, 'index1.html', context={
         'lang': lang,
     })
 

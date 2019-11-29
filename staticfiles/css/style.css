@@ -116,7 +116,7 @@ body {
     border-top:1px solid #f5f7fa;
 	height: 62.5vh;
 	margin: 0 auto;
-	max-width: 87.5vw;
+	width: 87.5vw;
 	width: auto
 }
 
@@ -201,7 +201,7 @@ body {
 	background-size: cover;
 	display: block;
 	height: 100%;
-	max-width: 100%;
+	width: 100%;
 	object-fit: cover;
 	position: relative;
 	vertical-align: middle;
@@ -264,7 +264,7 @@ body {
 	justify-content: space-between;
 	margin: 0 auto;
 	margin-top: 16px;
-	max-width: 87.5vw;
+	width: 87.5vw;
 	vertical-align: center
 }
 
@@ -310,7 +310,7 @@ justify-content:space-between;
 margin:0 auto;
 padding:16px 0;
 vertical-align:center;
-max-width:87.5vw
+width:87.5vw
 }
 
 .dictionary-footer a {

@@ -5,8 +5,8 @@
 	<meta charset="UTF-8">
 	<title>EwaGlos</title>
 	<link rel="stylesheet" href="{% static 'style.css' %}">
-    <link rel="icon" href="{% static 'img/certification.ico'%}" type="image/x-icon">
-    <link rel="shortcut icon" href="{% static 'img/certification.ico'%}" type="image/x-icon">
+    <link rel="icon" href="{% static 'img/certification.ico' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'img/certification.ico' %}" type="image/x-icon">
 </head>
 <body>
 	<header>
@@ -20,7 +20,7 @@
             </a>
             <div class="search">
                 <form action="{% url 'search' lang %}" method="get" >
-                    <img class="logo_svg" src="{% static 'img/search.svg'%}" alt="" height="17" width="17"><input name="q" type="text" style="height: 12px; padding-left: 25px;">
+                    <img class="logo_svg" src="{% static 'img/search.svg' %}" alt="" height="17" width="17"><input name="q" type="text" style="height: 12px; padding-left: 25px;">
                 </form>
             </div>
             <div class="select_lan">
@@ -31,9 +31,9 @@
         <div class="breadcrumbs">
             <ul>
             <a href="{% url "index_translate" lang %}">
-                <img src="{% static 'img/house.svg'%}" alt="" height="30" width="30">
+                <img src="{% static 'img/house.svg' %}" alt="" height="30" width="30">
             </a>
-                <img src="{% static 'img/arrow.svg'%}" alt="" height="22" width="22" style="margin: 4px">
+                <img src="{% static 'img/arrow.svg' %}" alt="" height="22" width="22" style="margin: 4px">
             </ul>
         </div>
 	</header>

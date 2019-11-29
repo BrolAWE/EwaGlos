@@ -23,39 +23,37 @@
                     <img class="logo_svg" src="{% static 'img/search.svg'%}" alt="" height="17" width="17"><input name="q" type="text" style="height: 12px; padding-left: 25px;">
                 </form>
             </div>
-            <div class="select_lan">
-                 <a href="{% url "index_translate" "EN" %}"><img src="{% static 'img/us.svg' %}" alt="" height="23" width="23"></a>
-                 <a href="{% url "index_translate" "RU" %}"><img src="{% static 'img/ru.svg' %}" alt="" height="23" width="23"></a>
-                </div>
 		</div>
         <div class="breadcrumbs">
+            <ul>
+            <a href="{% url "index_translate" lang %}">
+                <img src="{% static 'img/house.svg'%}" alt="" height="30" width="30">
+            </a>
+                <img src="{% static 'img/arrow.svg'%}" alt="" height="22" width="22" style="margin: 4px">
+            </ul>
         </div>
-		<div class="section">
+    	</header>
+        <div class="section">
 			<ul>
-                    <a href="{% url "sections" lang %}" style="background-image: url({% static 'img/XwIB.gif'%}); background-size: cover;">
+                {% for word in words %}
+                    {% if lang == "RU" and word.language != "RU" %}
+                    <a href="{% url "word" lang word.word.pk word.language %}" style="background-image: url({{ word.word.image.url }}); background-size: cover;">
+                    {% elif lang == "RU" and word.language == "RU" %}
+                    <a href="{% url "word" lang word.word.pk "EN" %}" style="background-image: url({{ word.word.image.url }}); background-size: cover;">
+                    {% elif lang == "EN" and word.language != "EN" %}
+                    <a href="{% url "word" lang word.word.pk word.language %}" style="background-image: url({{ word.word.image.url }}); background-size: cover;">
+                    {% elif lang == "EN" and word.language == "EN" %}
+                    <a href="{% url "word" lang word.word.pk "RU" %}" style="background-image: url({{ word.word.image.url }}); background-size: cover;">
+                    {% endif %}
                         <li>
                             <span>
-                                {% if lang == "RU" %}
-                                    Открыть словарь
-                                {% elif lang == "EN" %}
-                                    Open book
-                                {% endif %}
+                            {{ word.name }}
+                                {{ word.language }}
                             </span>
                         </li>
                     </a>
-                    <a href="{% url "about" lang %}" style="background-image: url({% static 'img/ric.gif'%}); background-size: cover;">
-                        <li>
-                            <span>
-                                {% if lang == "RU" %}
-                                    О проекте
-                                {% elif lang == "EN" %}
-                                    About
-                                {% endif %}
-                            </span>
-                        </li>
-                    </a>
+                {% endfor %}
 			</ul>
 		</div>
-	</header>
 </body>
 </html>

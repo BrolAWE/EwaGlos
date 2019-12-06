@@ -119,7 +119,7 @@
                     <div class="sinonimi">
                     <ul>
                         {% for close_sense_word in close_sense_words %}
-                        <a href="{% url "word" lang close_sense_word.close_sense.pk word_translation.language %}">
+                        <a href="{% url "word" lang close_sense_word.word.pk word_translation.language %}">
                             <li>
                                 {{ close_sense_word.name }}
                             </li>

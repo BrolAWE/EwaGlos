@@ -127,6 +127,7 @@ class CloseSenseWord(models.Model):
         return "{0}, {1}".format(self.word, self.close_sense)
 
     class Meta:
+        unique_together = ['word', 'close_sense']
         verbose_name = "Близкое по смыслу слово"
         verbose_name_plural = "Близкие по смыслу слова"
 
@@ -141,5 +142,6 @@ class Synonym(models.Model):
         return "{0}".format(self.synonym)
 
     class Meta:
+        unique_together = ['word', 'synonym']
         verbose_name = "Синоним"
         verbose_name_plural = "Синонимы"

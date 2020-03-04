@@ -35,23 +35,28 @@
                     Sections
                 {% endif %}
             </a></li>
-            <li class="breadcrumb-item"><a href="{% url "subsections" lang subsection.section.pk %}">{{ section.name }}</a></li>
+            <li class="breadcrumb-item"><a
+                    href="{% url "subsections" lang subsection.section.pk %}">{{ section.name }}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ sub.name }}</li>
         </ol>
     </nav>
 
     <div class="card-columns">
         {% for word in words %}
-            <a href="{% url "word" lang word.word.pk "RU" %}">
-                <div class="card">
-                    <img class="card-img-top" src="{{ word.word.image.url }}" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            {{ word.name }}
-                        </h5>
-                    </div>
-                </div>
-            </a>
+            {% if lang == "RU" %}
+                <a href="{% url "word" lang word.word.pk "EN" %}">
+            {% elif lang == "EN" %}
+                <a href="{% url "word" lang word.word.pk "RU" %}">
+            {% endif %}
+        <div class="card">
+            <img class="card-img-top" src="{{ word.word.image.url }}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">
+                    {{ word.name }}
+                </h5>
+            </div>
+        </div>
+        </a>
         {% endfor %}
     </div>
 {% endblock %}

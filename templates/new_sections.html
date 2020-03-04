@@ -1,0 +1,52 @@
+{% extends "bootstrap4/bootstrap4.html" %}
+{% load static %}
+{% block bootstrap4_title %}EwaGlos{% endblock %}
+{% block bootstrap4_extra_head %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">{% endblock %}
+{% block bootstrap4_content %}
+
+    <nav class="navbar navbar-dark bg-primary justify-content-between">
+        <a class="navbar-brand">Ewaglos</a>
+        <form class="form-inline" action="{% url 'search' lang %}" method="get">
+            <div class="select_lan">
+                <a href="{% url "sections" "EN" %}"><img src="{% static 'img/us.svg' %}" alt="" height="23" width="23"></a>
+                <a href="{% url "sections" "RU" %}"><img src="{% static 'img/ru.svg' %}" alt="" height="23" width="23"></a>
+            </div>
+            <input class="form-control mr-sm-2" name="q" type="text" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </nav>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url "index_translate" lang %}">
+                {% if lang == "RU" %}
+                    Главная
+                {% elif lang == "EN" %}
+                    Home
+                {% endif %}
+            </a></li>
+            <li class="breadcrumb-item active" aria-current="page">
+                {% if lang == "RU" %}
+                    Разделы
+                {% elif lang == "EN" %}
+                    Sections
+                {% endif %}
+            </li>
+        </ol>
+    </nav>
+
+    <div class="card-columns">
+        {% for section in sections %}
+            <a href="{% url "subsections"  lang section.section.pk %}">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            {{ section.name }}
+                        </h5>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

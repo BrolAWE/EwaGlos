@@ -96,7 +96,7 @@ main {
 }
 .header-name {
 	background-color: #82ae28;
-	height: 30px;
+	height: 50px;
 	padding-top: 10px;
 	color: #fff;
 }
@@ -141,14 +141,13 @@ span {
 .list-language {
 	float: left;
 	width: 40px;
-	background-color: #4f873b;
 	position: absolute;
 	left: -10px;
 }
 .list-language ul li a {
 	text-transform: uppercase;
   	font-size: 14px;
-  	height: 15px;
+  	height: 30px;
   	font-weight: 600;
   	line-height: 2.57;
   	text-align: left;
@@ -164,7 +163,7 @@ span {
 .list-word-language ul li {
 	text-transform: uppercase;
   	font-size: 14px;
-  	height: 15px;
+  	height: 30px;
   	font-weight: 600;
   	line-height: 2.57;
   	text-align: left;

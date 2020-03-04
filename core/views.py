@@ -13,46 +13,51 @@ from core.serializers import WordSerializer, \
 
 
 def index(request, lang="RU"):
-    return render(request, 'index.html', context={
+    return render(request, 'new_index.html', context={
         'lang': lang,
     })
 
 
 def about(request, lang):
-    return render(request, 'about.html', context={
+    return render(request, 'new_about.html', context={
         'lang': lang,
     })
 
 
 def sections(request, lang):
     sections = SectionTranslation.objects.filter(language=lang)
-    return render(request, 'sections.html', context={
+    return render(request, 'new_sections.html', context={
         'sections': sections,
         'lang': lang,
     })
 
 
 def subsections(request, lang, pk):
+    sec = Section.objects.get(pk=pk)
+    section = SectionTranslation.objects.get(section=sec, language=lang)
     subsection = Subsection.objects.filter(section=pk)
     subsections = SubsectionTranslation.objects.filter(subsection__in=subsection.values_list("pk"), language=lang)
-    return render(request, 'subsections.html', context={
+    return render(request, 'new_subsections.html', context={
         'pk': pk,
         'subsections': subsections,
         'lang': lang,
+        'section': section
     })
 
 
 def words(request, lang, pk):
     subsection = Subsection.objects.get(pk=pk)
+    sub = SubsectionTranslation.objects.get(subsection=subsection, language=lang)
     section = SectionTranslation.objects.get(section=subsection.section, language=lang)
     word = Word.objects.filter(subsection=pk)
     words = WordTranslation.objects.filter(word__in=word.values_list("pk"), language=lang)
-    return render(request, 'words.html', context={
+    return render(request, 'new_words.html', context={
         'subsection': subsection,
         'words': words,
         'section': section,
         'lang': lang,
         'pk': pk,
+        'sub':sub
     })
 
 
@@ -71,7 +76,7 @@ def word(request, lang, pk, lan):
             word__in=close_senses.values_list("close_sense")).filter(language=lan)
     except Word.DoesNotExist:
         raise Http404
-    return render(request, 'word.html', context={
+    return render(request, 'new_word.html', context={
         'lang': lang,
         'word': word,
         'wordtrans': wordtrans,
@@ -88,7 +93,7 @@ def search(request, lang):
     query = request.GET.get("q").strip()
     synonyms = Synonym.objects.filter(Q(synonym__icontains=query))
     words = WordTranslation.objects.filter(Q(name__icontains=query) | Q(pk__in=synonyms.values_list("word")))
-    return render(request, 'search.html', context={
+    return render(request, 'new_search.html', context={
         'words': words,
         'lang': lang,
     })

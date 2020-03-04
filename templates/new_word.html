@@ -1,0 +1,224 @@
+{% extends "bootstrap4/bootstrap4.html" %}
+{% load static %}
+{% block bootstrap4_title %}EwaGlos{% endblock %}
+{% block bootstrap4_extra_head %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">{% endblock %}
+{% block bootstrap4_content %}
+
+    <nav class="navbar navbar-dark bg-primary justify-content-between">
+        <a class="navbar-brand">Ewaglos</a>
+        <form class="form-inline" action="{% url 'search' lang %}" method="get">
+            <div class="select_lan">
+                {% if word_translation.language != "EN" %}
+                    <a href="{% url "word" "EN" word.pk word_translation.language %}">
+                {% elif word_translation.language == "EN" %}
+                    <a href="{% url "word" "EN" word.pk "RU" %}">
+                {% endif %}
+                <img src="{% static 'img/us.svg' %}" alt="" height="23" width="23">
+                </a>
+                {% if word_translation.language != "RU" %}
+                    <a href="{% url "word" "RU" word.pk word_translation.language %}">
+                {% elif word_translation.language == "RU" %}
+                    <a href="{% url "word" "RU" word.pk "EN" %}">
+                {% endif %}
+                <img src="{% static 'img/ru.svg' %}" alt="" height="23" width="23">
+                </a>
+            </div>
+            <input class="form-control mr-sm-2" name="q" type="text" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </nav>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url "index_translate" lang %}">
+                {% if lang == "RU" %}
+                    Главная
+                {% elif lang == "EN" %}
+                    Home
+                {% endif %}
+            </a></li>
+            <li class="breadcrumb-item"><a href="{% url "sections" wordtrans.language %}">
+                {% if lang == "RU" %}
+                    Разделы
+                {% elif lang == "EN" %}
+                    Sections
+                {% endif %}
+            </a></li>
+            <li class="breadcrumb-item"><a
+                    href="{% url "subsections" wordtrans.language section.section.pk %}">{{ section.name }}</a></li>
+            <li class="breadcrumb-item"><a
+                    href="{% url "words" wordtrans.language subsection.subsection.pk %}">{{ subsection.name }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ wordtrans.name }}</li>
+        </ol>
+    </nav>
+
+    {% if word.image.url != None %}
+        <div class="image">
+            <img src="{{ word.image.url }}" alt="" width="750" height="450">
+            <span>
+                    {{ wordtrans.image_description }}
+                </span>
+        </div>
+    {% endif %}
+    <div class="words">
+        <div class="ru-word">
+            <div class="header-name" style="background-color: {{ subsection.subsection.color }}">
+                <div class="name">
+                    <h3>
+                        {{ wordtrans.name }}
+                    </h3>
+                </div>
+                <div class="name-language">
+                    <h3>
+                        {{ wordtrans.language }}
+                    </h3>
+                </div>
+            </div>
+            <div class="definition">
+						<span>
+                        {% if lang == "RU" %}
+                            Определение:
+                        {% elif lang == "EN" %}
+                            Definition:
+                        {% endif %}
+                        </span>
+                {{ wordtrans.definition }}
+            </div>
+            <div class="comment">
+						<span>
+                        {% if lang == "RU" %}
+                            Комментарий:
+                        {% elif lang == "EN" %}
+                            Comment:
+                        {% endif %}
+                        </span>
+                {{ wordtrans.comment }}
+            </div>
+            <div class="sinonimi">
+                <ul>
+                    {% for close_sense_word in close_sense_words %}
+                        <a href="{% url "word" lang close_sense_word.word.pk word_translation.language %}">
+                            <li>
+                                {{ close_sense_word.name }}
+                            </li>
+                        </a>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="ne-ru-word">
+            <div class="header-name" style="background-color: {{ subsection.subsection.color }}">
+                <div class="name">
+                    <h3>
+                        {{ word_translation.name }}
+                    </h3>
+                </div>
+                <div class="name-language">
+                    <h3>
+                        {{ word_translation.language }}
+                    </h3>
+                </div>
+            </div>
+            <div class="definition">
+						<span>
+                            {% if word_translation.language == "EN" %}
+                                Definition:
+                            {% elif word_translation.language == "RU" %}
+                                Определение:
+                            {% elif word_translation.language == "FR" %}
+                                Définition:
+                            {% elif word_translation.language == "DE" %}
+                                Definition:
+                            {% elif word_translation.language == "HR" %}
+                                Definicija:
+                            {% elif word_translation.language == "HU" %}
+                                Meghatározás:
+                            {% elif word_translation.language == "IT" %}
+                                Definizione:
+                            {% elif word_translation.language == "RO" %}
+                                Definiţie:
+                            {% elif word_translation.language == "TR" %}
+                                Tanım:
+                            {% elif word_translation.language == "BG" %}
+                                Дефиниция:
+                            {% elif word_translation.language == "ES" %}
+                                Definición:
+                            {% elif word_translation.language == "PL" %}
+                                Definicja:
+                            {% endif %}
+                        </span>
+                {{ word_translation.definition }}
+            </div>
+            <div class="comment">
+						<span>
+                            {% if word_translation.language == "EN" %}
+                                Comment:
+                            {% elif word_translation.language == "RU" %}
+                                Комментарий:
+                            {% elif word_translation.language == "FR" %}
+                                Commentaires:
+                            {% elif word_translation.language == "DE" %}
+                                Kommentar:
+                            {% elif word_translation.language == "HR" %}
+                                Napomena:
+                            {% elif word_translation.language == "HU" %}
+                                Megjegyzés:
+                            {% elif word_translation.language == "IT" %}
+                                Commento:
+                            {% elif word_translation.language == "RO" %}
+                                Adnotare:
+                            {% elif word_translation.language == "TR" %}
+                                Yorum:
+                            {% elif word_translation.language == "BG" %}
+                                Коментар:
+                            {% elif word_translation.language == "ES" %}
+                                Comentario:
+                            {% elif word_translation.language == "PL" %}
+                                Komentarz:
+                            {% endif %}
+                        </span>
+                {{ word_translation.comment }}
+            </div>
+            <div class="sinonimi">
+                <ul>
+                    {% for close_sense_translation in close_sense_translations %}
+                        <a href="{% url "word" wordtrans.language close_sense_translation.word.pk word_translation.language %}">
+                            <li>
+                                {{ close_sense_translation.name }}
+                            </li>
+                        </a>
+                    {% endfor %}
+                </ul>
+            </div>
+
+        </div>
+        <div class="language">
+            <div class="header-name" style="background-color: {{ subsection.subsection.color }}"></div>
+            <div class="list-language">
+                <ul>
+                    {% for wordtranslation in word_translations %}
+                        <li>
+                            <a href="{% url "word" wordtrans.language word.pk wordtranslation.language %}"
+                               style="background-color: {{ section.section.color }}">
+                                {{ wordtranslation.language }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="list-word-language">
+                <ul>
+                    {% for wordtranslation in word_translations %}
+                        <li>
+                            <a href="{% url "word" wordtrans.language word.pk wordtranslation.language %}">
+                                {{ wordtranslation.name }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

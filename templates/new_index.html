@@ -1,0 +1,62 @@
+{% extends "bootstrap4/bootstrap4.html" %}
+{% load static %}
+{% block bootstrap4_title %}EwaGlos{% endblock %}
+{% block bootstrap4_extra_head %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">{% endblock %}
+{% block bootstrap4_content %}
+
+    <nav class="navbar navbar-dark bg-primary justify-content-between">
+        <a class="navbar-brand">Ewaglos</a>
+        <form class="form-inline" action="{% url 'search' lang %}" method="get">
+            <div class="select_lan">
+                <a href="{% url "index_translate" "EN" %}"><img src="{% static 'img/us.svg' %}" alt="" height="23"
+                                                                width="23"></a>
+                <a href="{% url "index_translate" "RU" %}"><img src="{% static 'img/ru.svg' %}" alt="" height="23"
+                                                                width="23"></a>
+            </div>
+            <input class="form-control mr-sm-2" placeholder="Search" aria-label="Search" name="q" type="text">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </nav>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">
+                {% if lang == "RU" %}
+                    Главная
+                {% elif lang == "EN" %}
+                    Home
+                {% endif %}
+            </li>
+        </ol>
+    </nav>
+
+    <div class="card-columns">
+        <a href="{% url "sections" lang %}">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {% if lang == "RU" %}
+                            Открыть словарь
+                        {% elif lang == "EN" %}
+                            Open book
+                        {% endif %}
+                    </h5>
+                </div>
+            </div>
+        </a>
+        <a href="{% url "about" lang %}">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {% if lang == "RU" %}
+                            О проекте
+                        {% elif lang == "EN" %}
+                            About
+                        {% endif %}
+                    </h5>
+                </div>
+            </div>
+        </a>
+    </div>
+{% endblock %}

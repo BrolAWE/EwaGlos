@@ -16,6 +16,9 @@ LANG = (
     ('RU', 'Russian'),
     ('TR', 'Turkish'),
     ('PL', 'Polish'),
+    ('JP', 'Japanese'),
+    ('FA', 'Farsi'),
+    ('AR', 'Arabic'),
 )
 
 

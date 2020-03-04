@@ -1,0 +1,57 @@
+{% extends "bootstrap4/bootstrap4.html" %}
+{% load static %}
+{% block bootstrap4_title %}EwaGlos{% endblock %}
+{% block bootstrap4_extra_head %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">{% endblock %}
+{% block bootstrap4_content %}
+
+    <nav class="navbar navbar-dark bg-primary justify-content-between">
+        <a class="navbar-brand">Ewaglos</a>
+        <form class="form-inline" action="{% url 'search' lang %}" method="get">
+            <input class="form-control mr-sm-2" name="q" type="text" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </nav>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url "index_translate" lang %}">
+                {% if lang == "RU" %}
+                    Главная
+                {% elif lang == "EN" %}
+                    Home
+                {% endif %}
+            </a></li>
+            <li class="breadcrumb-item active" aria-current="page">
+                 {% if lang == "RU" %}
+                    Поиск
+                {% elif lang == "EN" %}
+                    Search
+                {% endif %}
+            </li>
+        </ol>
+    </nav>
+
+    <div class="card-columns">
+        {% for word in words %}
+            {% if lang == "RU" and word.language != "RU" %}
+                <a href="{% url "word" lang word.word.pk word.language %}">
+            {% elif lang == "RU" and word.language == "RU" %}
+                <a href="{% url "word" lang word.word.pk "EN" %}">
+            {% elif lang == "EN" and word.language != "EN" %}
+                <a href="{% url "word" lang word.word.pk word.language %}">
+            {% elif lang == "EN" and word.language == "EN" %}
+                <a href="{% url "word" lang word.word.pk "RU" %}">
+            {% endif %}
+        <div class="card">
+            <img class="card-img-top" src="{{ word.word.image.url }}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">
+                    {{ word.name }}
+                </h5>
+            </div>
+        </div>
+        </a>
+        {% endfor %}
+    </div>
+{% endblock %}

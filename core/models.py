@@ -56,6 +56,7 @@ class Word(models.Model):
     subsection = models.ForeignKey(Subsection, on_delete=models.CASCADE, verbose_name="Выбрать/добавить подраздел")
     code = models.CharField(max_length=100, help_text="Пример заполнения 1: <em>001001001</em>",
                             verbose_name="Код слова", primary_key=True)
+    source = models.TextField(help_text="Напишите источник слова", verbose_name="Источник", null=True)
     image = cloudinary.models.CloudinaryField('картинка')
 
     def __str__(self):

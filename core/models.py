@@ -57,7 +57,7 @@ class Word(models.Model):
     code = models.CharField(max_length=100, help_text="Пример заполнения 1: <em>001001001</em>",
                             verbose_name="Код слова", primary_key=True)
     source = models.TextField(help_text="Напишите источник слова", verbose_name="Источник", null=True)
-    image = cloudinary.models.CloudinaryField('картинка')
+    image = cloudinary.models.CloudinaryField('картинка', blank=True, null=True)
 
     def __str__(self):
         return "{0}".format(self.pk)
@@ -77,7 +77,7 @@ class WordTranslation(models.Model):
     comment = models.TextField(help_text="Напишите комментарий слова на выбранном языке", verbose_name="Комментарий")
     image_description = models.TextField(
         help_text="Пример заполнения: <em>объект изображения, время создания объекта, автор изображения,"
-                  " время создания изображения</em>", verbose_name="Описание картинки")
+                  " время создания изображения</em>", verbose_name="Описание картинки", blank=True, null=True)
 
     def __str__(self):
         return "{0}, {1}".format(self.pk, self.name)

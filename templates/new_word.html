@@ -55,17 +55,17 @@
         </ol>
     </nav>
 
-    {% if word.image.url != None %}
         <div class="image">
+            {% if word.image.url != None %}
             <img src="{{ word.image.url }}" alt="" width="750" height="450">
             <span>
                     {{ wordtrans.image_description }}
                 </span>
+            {% endif %}
             <span>
                     {{ word.source }}
                 </span>
         </div>
-    {% endif %}
     <div class="words">
         <div class="ru-word">
             <div class="header-name" style="background-color: {{ subsection.subsection.color }}">

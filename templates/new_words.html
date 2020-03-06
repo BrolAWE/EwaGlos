@@ -49,7 +49,9 @@
                 <a href="{% url "word" lang word.word.pk "RU" %}">
             {% endif %}
         <div class="card">
-            <img class="card-img-top" src="{{ word.word.image.url }}" alt="Card image cap">
+            {% if word.word.image.url != None %}
+                <img class="card-img-top" src="{{ word.word.image.url }}" alt="Card image cap">
+            {% endif %}
             <div class="card-body">
                 <h5 class="card-title">
                     {{ word.name }}

@@ -97,7 +97,7 @@ main {
 	margin-left: 8%;
 }
 .header-name {
-	background-color: #82ae28;
+	/*background-color: #82ae28;*/
 	height: 50px;
 	padding-top: 10px;
 	color: #fff;
@@ -315,6 +315,7 @@ span {
 	position: fixed;
 	width: 100%;
 	top:0;
+	z-index: 1;
 }
 #bootstrap-overrides .navbar-brand{
 	color: #ffffff;

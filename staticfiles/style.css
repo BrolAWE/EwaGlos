@@ -247,18 +247,18 @@ span {
 	text-align: left;
 	font-weight: 500;
 	font-size: 13px;
-	margin-top: 25px;
 	font-style: italic;
+	margin: 25px 0 20px;
+	margin-right: 50px;
 }
 .section_about p {
 	margin: 0 40px 0 40px;
 	line-height: 1.3em;
 	font-size: 15px;
-	text-align: left;
+	text-indent: 40px;
+	text-align: justify;
 }
-.section_about p:first-child {
-	margin-left: 4px;
-}
+
 .sinonimi ul a  {
 	color: #000000;
 }
@@ -312,8 +312,8 @@ span {
 .navbar {
 	background-color: #0f0f0f;
 }
-.navbar-brand{
-	color: #ffffff !important;
+#bootstrap-overrides .navbar-brand{
+	color: #ffffff;
     font-weight: bold;
 }
 .btn{
@@ -322,8 +322,6 @@ span {
 	outline-color: #2aabd2;
 	background-color: #2C2C2C;
 }
-
-/*  btn-dark btn-outline-info*/
 
 @media screen and (max-width: 970px) {
 		.list-word-language ul li {

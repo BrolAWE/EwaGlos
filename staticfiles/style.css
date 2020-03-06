@@ -1,3 +1,4 @@
+/* список */
 * {
 	padding: 0;
 	margin: 0;
@@ -125,7 +126,6 @@ main {
 	padding-right: 10px;
 	margin: auto;
 	text-align: justify;
-	margin: 30px auto;
 	line-height: 25px;
 }
 .comment {
@@ -309,6 +309,21 @@ span {
 		margin-left:0;
 	}
 }
+.navbar {
+	background-color: #0f0f0f;
+}
+.navbar-brand{
+	color: #ffffff !important;
+    font-weight: bold;
+}
+.btn{
+	color: #2aabd2;
+	outline-style: auto;
+	outline-color: #2aabd2;
+	background-color: #2C2C2C;
+}
+
+/*  btn-dark btn-outline-info*/
 
 @media screen and (max-width: 970px) {
 		.list-word-language ul li {

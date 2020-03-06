@@ -7,11 +7,11 @@
     <link rel="shortcut icon" href="{% static 'img/certification.ico' %}" type="image/x-icon">{% endblock %}
 {% block bootstrap4_content %}
 
-    <nav class="navbar navbar-dark bg-primary justify-content-between">
+    <nav class="navbar">
         <a class="navbar-brand">Ewaglos</a>
         <form class="form-inline" action="{% url 'search' lang %}" method="get">
             <input class="form-control mr-sm-2" name="q" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn" type="submit">Search</button>
         </form>
     </nav>
 

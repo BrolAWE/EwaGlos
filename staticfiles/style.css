@@ -11,7 +11,6 @@ html, body {
 }
 body {
 	font-family: arial, sans-serif;
-	padding-top: 56px;
 }
 header {
 	width: 100%;
@@ -39,7 +38,7 @@ main {
 	margin-left: 8%;
 }
 .header-name {
-	height: 50px;
+	height: 60px;
 	padding-top: 10px;
 	color: #fff;
 }
@@ -253,10 +252,8 @@ span {
 }
 .navbar {
 	background-color: #0f0f0f;
-	position: fixed;
 	width: 100%;
 	top:0;
-	z-index: 1;
 }
 #bootstrap-overrides .navbar-brand{
 	color: #ffffff;

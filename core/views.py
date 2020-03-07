@@ -76,7 +76,7 @@ def word(request, lang, pk, lan):
             word__in=close_senses.values_list("close_sense")).filter(language=lan)
     except Word.DoesNotExist:
         raise Http404
-    return render(request, 'new_word.html', context={
+    return render(request, 'word.html', context={
         'lang': lang,
         'word': word,
         'wordtrans': wordtrans,

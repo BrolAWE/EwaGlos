@@ -69,23 +69,17 @@
     </nav>
 
     <div class="container-fluid">
-        <div class="row">
-            <img src="{{ word.image.url }}" class="rounded mx-auto d-block" alt="Responsive image">
-        </div>
+        {% if word.image.url != None %}
+            <div class="row">
+                <img src="{{ word.image.url }}" class="rounded mx-auto d-block" alt="Responsive image">
+            </div>
+        {% endif %}
         <div class="row">
             <div class="col-4">
-                <div class="row header-name" style="background-color: {{ subsection.subsection.color }}">
-                    <div class="name">
-                        <h4>
-                            {{ wordtrans.name }}
-                        </h4>
-                    </div>
-                    <div class="name-language">
-                        <h4>
-                            {{ wordtrans.language }}
-                        </h4>
-                    </div>
-                </div>
+                <dl class="row header-name" style="background-color: {{ subsection.subsection.color }}">
+                    <dt class="col-9">{{ wordtrans.name }}</dt>
+                    <dd class="col-3">{{ wordtrans.language }}</dd>
+                </dl>
                 <div class="row definition">
 						<span>
                         {% if lang == "RU" %}
@@ -119,18 +113,10 @@
                 </div>
             </div>
             <div class="col-4">
-                <div class="row header-name" style="background-color: {{ subsection.subsection.color }}">
-                    <div class="name">
-                        <h4>
-                            {{ word_translation.name }}
-                        </h4>
-                    </div>
-                    <div class="name-language">
-                        <h4>
-                            {{ word_translation.language }}
-                        </h4>
-                    </div>
-                </div>
+                <dl class="row header-name" style="background-color: {{ subsection.subsection.color }}">
+                    <dt class="col-9">{{ word_translation.name }}</dt>
+                    <dd class="col-3">{{ word_translation.language }}</dd>
+                </dl>
                 <div class="row definition">
 						<span>
                             {% if word_translation.language == "EN" %}
@@ -230,6 +216,11 @@
                 </div>
             </div>
         </div>
+        {% if word.source != None %}
+            <div class="row">
+                {{ word.source }}
+            </div>
+        {% endif %}
     </div>
 
     <!-- Footer -->

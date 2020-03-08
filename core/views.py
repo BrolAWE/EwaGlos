@@ -137,4 +137,4 @@ class SearchView(APIView):
         trans = WordTranslation.objects.filter(Q(name__icontains=query) | Q(pk__in=synonyms.values_list("word")))
         words = Word.objects.filter(pk__in=trans.values_list("word"))
         serializer = WordSerializer(words, many="True")
-        return Response(serializer.data)
+        return Response({"words": serializer.data})

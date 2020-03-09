@@ -57,7 +57,7 @@ def words(request, lang, pk):
         'section': section,
         'lang': lang,
         'pk': pk,
-        'sub':sub
+        'sub': sub
     })
 
 
@@ -127,4 +127,14 @@ class WordView(APIView):
         pk = kwargs.get('pk')
         word = Word.objects.get(code=pk)
         serializer = WordSerializer(word)
+        return Response(serializer.data)
+
+
+class SearchView(APIView):
+    def get(self, *args, **kwargs):
+        query = self.request.query_params.get("q").strip()
+        synonyms = Synonym.objects.filter(Q(synonym__icontains=query))
+        trans = WordTranslation.objects.filter(Q(name__icontains=query) | Q(pk__in=synonyms.values_list("word")))
+        words = Word.objects.filter(pk__in=trans.values_list("word"))
+        serializer = WordSerializer(words, many="True")
         return Response(serializer.data)

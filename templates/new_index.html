@@ -2,6 +2,7 @@
 {% load static %}
 {% block bootstrap4_title %}EwaGlos{% endblock %}
 {% block bootstrap4_extra_head %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <link rel="icon" href="{% static 'img/ewaglos_logo.ico' %}" type="image/x-icon">
     <link rel="shortcut icon" href="{% static 'img/ewaglos_logo.ico' %}" type="image/x-icon">
@@ -46,9 +47,11 @@
         </ol>
     </nav>
 
-    <div class="card-columns">
+    <div class="card-columns mx-auto">
+    <!-- <div class="card-columns col d-flex justify-content-center"> -->
         <a href="{% url "sections" lang %}">
             <div class="card">
+                <img src="{% static 'img/open_book.PNG' %}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">
                         {% if lang == "RU" %}
@@ -62,6 +65,7 @@
         </a>
         <a href="{% url "about" lang %}">
             <div class="card">
+                <img src="{% static 'img/ewaglos_logo.png' %}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">
                         {% if lang == "RU" %}

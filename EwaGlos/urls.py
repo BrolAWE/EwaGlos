@@ -34,6 +34,6 @@ urlpatterns = [
     path('api/word/<str:pk>', views.WordView.as_view(), name="word_api"),
     path('api/search', views.SearchView.as_view(), name="search_api"),
 ]
-admin.site.site_header = "Дроблин"
+admin.site.site_header = "Администратор EwaGlos"
 admin.site.site_title = "Admin"
 admin.site.index_title = "EwaGlos"

@@ -1,3 +1,5 @@
+import operator
+
 from decouple import config
 from django.db.models import Q
 from django.http import Http404
@@ -51,6 +53,7 @@ def words(request, lang, pk):
     section = SectionTranslation.objects.get(section=subsection.section, language=lang)
     word = Word.objects.filter(subsection=pk)
     words = WordTranslation.objects.filter(word__in=word.values_list("pk"), language=lang)
+    words= sorted(words, key=operator.attrgetter('name'))
     return render(request, 'new_words.html', context={
         'subsection': subsection,
         'words': words,

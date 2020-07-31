@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.views.generic.base import TemplateView
 
 from core import views
 
@@ -33,6 +34,10 @@ urlpatterns = [
     path('api/words/<str:pk>', views.WordsView.as_view(), name="words_api"),
     path('api/word/<str:pk>', views.WordView.as_view(), name="word_api"),
     path('api/search', views.SearchView.as_view(), name="search_api"),
+    path(
+        "robots.txt",
+        TemplateView.as_view(template_name="robots.txt", content_type="text/plain"),
+    ),
 ]
 admin.site.site_header = "Администратор EwaGlos"
 admin.site.site_title = "Admin"

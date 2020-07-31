@@ -8,7 +8,13 @@
 {% block bootstrap4_content %}
 
     <nav class="navbar" id="bootstrap-overrides">
-        <a class="navbar-brand">Словарь терминов охраны и восстановления архитектурных объектов</a>
+        <a class="navbar-brand">
+            {% if lang == 'RU' %}
+                Словарь терминов охраны и восстановления архитектурных объектов
+            {% elif lang == 'EN' %}
+                European illustrated Glossary of conservation terms for wall painting and architectural surfaces
+            {% endif %}
+        </a>
         <form class="form-inline" action="{% url 'search' lang %}" method="get">
             <div class="select_lan">
                 <a href="{% url "words" "EN" pk %}"><img src="{% static 'img/us.svg' %}" alt="" height="23" width="23"></a>

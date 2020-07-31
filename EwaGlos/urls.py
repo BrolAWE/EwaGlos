@@ -38,6 +38,10 @@ urlpatterns = [
         "robots.txt",
         TemplateView.as_view(template_name="robots.txt", content_type="text/plain"),
     ),
+    path(
+        ".htaccess",
+        TemplateView.as_view(template_name=".htaccess", content_type="text/plain"),
+    ),
 ]
 admin.site.site_header = "Администратор EwaGlos"
 admin.site.site_title = "Admin"
